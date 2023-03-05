@@ -1,6 +1,6 @@
 import pygame
 
-from game import *
+from flor1 import *
 from opening import *
 import random
 from קבועים import *
