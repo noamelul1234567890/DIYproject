@@ -32,28 +32,26 @@ def main():
                 finish = True
 
             if event.type == pygame.KEYUP:
-                go_in_rezef = False
-                while go_in_rezef:
-                    if event.type == pygame.KEYUP:
-                        if event.key == pygame.K_DOWN:
-                            y -= 10
-                            wall_y -= 10
-                        if event.key == pygame.K_UP:
-                            y += 10
-                            wall_y += 10
-                        if event.key == pygame.K_RIGHT:
-                            x -= 10
-                            wall_x -= 10
-                        if event.key == pygame.K_LEFT:
-                            x += 10
-                            wall_x += 10
+                if event.type == pygame.KEYUP:
+                    if event.key == pygame.K_DOWN:
+                        y -= 10
+                        wall_y -= 10
+                    if event.key == pygame.K_UP:
+                        y += 10
+                        wall_y += 10
+                    if event.key == pygame.K_RIGHT:
+                        x -= 10
+                        wall_x -= 10
+                    if event.key == pygame.K_LEFT:
+                        x += 10
+                        wall_x += 10
 
-                        p = get_limit(x,y,wall_x,wall_y)
-                        x = p[0]
-                        y = p[1]
-                        wall_x = p[2]
-                        wall_y = p[3]
-                        pygame.display.flip()
+                    p = get_limit(x,y,wall_x,wall_y)
+                    x = p[0]
+                    y = p[1]
+                    wall_x = p[2]
+                    wall_y = p[3]
+                    pygame.display.flip()
 
 
 
