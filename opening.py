@@ -10,6 +10,9 @@ def restart_opening_windows():
     img = pygame.transform.scale(img,(start_background_width, start_background_height))
     screen.blit(img, (start_background_x_pos, start_background_y_pos))
 
-    square = pygame.Rect(x_pos, y_pos,
-                         width, height)
-    pygame.draw.rect(screen, color, square)
+    square = pygame.Rect(start_buttons_x_pos, start_buttons_y_pos, start_buttons_width, start_buttons_height)
+    pygame.draw.rect(screen, COLOR, square)
+
+    font = pygame.font.SysFont('Aharoni', start_text_size)
+    text = font.render(start_text_m, True, color)
+    screen.blit(text, [start_text_x_pos, start_text_y_pos])
