@@ -46,7 +46,7 @@ def main():
                         x += 10
                         wall_x += 10
 
-                    p = get_limit(x,y,wall_x,wall_y)
+                    p = limit(x,y,wall_x,wall_y)
                     x = p[0]
                     y = p[1]
                     wall_x = p[2]

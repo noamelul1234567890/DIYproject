@@ -23,25 +23,44 @@ def game(x, y, wall_x, wall_y):
     pygame.draw.rect(screen, color, square)
 
 
-def get_limit(x, y, wall_x, wall_y):
+def limit(x, y, wall_x, wall_y):
+    print(x , "  ", y)
+    print(wall_x , "  ", wall_y)
     if x > pos_x:
         x -= 10
         wall_x -= 10
     if pleyer_width + pos_x > x + plur_w:
         x += 10
         wall_x += 10
+
+    if (wall_x <= pos_x <= wall_x + wall_w) and (wall_y < pos_y < wall_y + wall_h):
+        x -= 10
+        wall_x -= 10
+
     if y > pos_y:
         y -= 10
         wall_y -= 10
     if pleyer_height + pos_y > y + plur_h:
         y += 10
-    wall_y += 10
+        wall_y += 10
+        print(2)
 
-    if wall_y < pos_y < wall_y :
+    if (wall_y < pos_y < wall_y + wall_h) and (wall_x <= pos_x <= wall_x + wall_w):
         y -= 10
+        print(1)
         wall_y -= 10
-    elif wall_x < pos_x < wall_x:
-        x -= 10
-        wall_x -= 10
+
+
+
+        # if wall_y < pos_y:
+        #     y -= 10
+        #     wall_y -= 10
+
+    # if wall_y > pos_y > wall_y + wall_h:
+    #     y -= 10
+    #     wall_y -= 10
+    # elif wall_x < pos_x < wall_x:
+    #     x -= 10
+    #     wall_x -= 10
 
     return [x, y, wall_x, wall_y]
