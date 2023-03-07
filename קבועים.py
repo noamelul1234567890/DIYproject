@@ -3,6 +3,10 @@ import Images
 start_background = "Images//OIP.jpg"
 plur_image = 'Images//flore.jpg'
 wall_image = 'Images//wall.jpg'
+pleyer_1_image_up ='Images//pleyer_1.png'
+pleyer_1_image_left ='Images//pleyer1234567.png'
+pleyer_1_image_rire = 'Images//pleyr123456.png'
+pleyer_1_image_dound ='Images//pleyer_11.png'
 WINDOW_HEIGHT = 500
 WINDOW_WIDTH = 500
 

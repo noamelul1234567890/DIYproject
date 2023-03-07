@@ -5,7 +5,7 @@ from classs import *
 screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), pygame.RESIZABLE)
 
 
-def bild_level_1(x, y, walls):
+def bild_level_1(x, y, walls,pleyer_image):
     img = pygame.image.load(plur_image)
     img = pygame.transform.scale(img, (plur_w, plur_h))
     screen.blit(img, (x, y))
@@ -32,8 +32,12 @@ def bild_level_1(x, y, walls):
     screen.blit(rect, (0, 0))
 
     # player
-    square = pygame.Rect(pos_x, pos_y, pleyer_width, pleyer_height)
-    pygame.draw.rect(screen, color, square)
+
+
+    img = pygame.image.load(pleyer_image)
+    img = pygame.transform.scale(img,
+                                 (pleyer_width, pleyer_height))
+    screen.blit(img, (pos_x, pos_y))
 
 
 def limit(flur_x, flur_y, walls):
@@ -117,4 +121,8 @@ def wall_x_p(walls,flur_x):
     walls[2].wall_x += 10
     walls[3].wall_x += 10
 
+
+def walls_in_level_1(walls_level_1):
+    if (walls_level_1[0].wall_x < pos_x < walls_level_1[0].wall_x + wall_w1) and (walls_level_1[0].wall_y < pos_y < walls_level_1[0].wall_y + wall_h1):
+        walls_level_1[0].wall_y -= 10
 
