@@ -1,5 +1,5 @@
 import pygame
-
+from classs import *
 from flor1 import *
 from opening import *
 import random
@@ -9,19 +9,30 @@ Screen_mode = 'opening'
 x = 0
 y = 0
 
+
 def main():
     global screen, Screen_mode
     screen_size = (WINDOW_WIDTH, WINDOW_HEIGHT)
     screen = pygame.display.set_mode(screen_size)
     pygame.init()
     finish = False
-    y = 0
-    x = 0
-    wall_x = 100
-    wall_y = 0
+
+    flur_y = 0
+    flur_x = 0
+
+    wall1 = wall(0,0,wall_w1,wall_h1)
+    wall2 = wall(0,0,wall_w2,wall_h2)
+
+    walls = [wall1,wall2]
 
 
 
+
+
+
+
+    # flat_line1 = wall(wall1_x, wall1_y, wall1_x + wall_w, wall1_y + wall_h)
+    # lines_on_limit =[flat_line1]
 
     while not finish:
 
@@ -34,29 +45,38 @@ def main():
             if event.type == pygame.KEYUP:
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_DOWN:
-                        y -= 10
-                        wall_y -= 10
+                        flur_y -= 10
+                        wall1.wall_y -= 10
+                        wall2.wall_y -= 10
                     if event.key == pygame.K_UP:
-                        y += 10
-                        wall_y += 10
+                        flur_y += 10
+                        wall1.wall_y += 10
+                        wall2.wall_y += 10
                     if event.key == pygame.K_RIGHT:
-                        x -= 10
-                        wall_x -= 10
+                        flur_x -= 10
+                        wall1.wall_x -= 10
+                        wall2.wall_x -= 10
                     if event.key == pygame.K_LEFT:
-                        x += 10
-                        wall_x += 10
+                        flur_x += 10
+                        wall1.wall_x += 10
+                        wall2.wall_x += 10
 
-                    p = limit(x,y,wall_x,wall_y)
-                    x = p[0]
-                    y = p[1]
-                    wall_x = p[2]
-                    wall_y = p[3]
+                    wall_num = 1
+                    p = limit(flur_x, flur_y, walls)
+                    flur_x = p[0]
+                    flur_y = p[1]
+                    walls[0].wall_x = p[2][0].wall_x
+                    walls[0].wall_y = p[2][0].wall_y
+
+
+                    wall_num = 2
+                    # p = limit(flur_x,flur_y,walls_x[2],walls_y[2])
+                    # flur_x = p[0]
+                    # flur_y = p[1]
+                    # walls_x[2] = p[2]
+                    # walls_y[2] = p[3]
+
                     pygame.display.flip()
-
-
-
-
-
 
                     # wall_x -= 10
                 # if pos_x_p >= plur_w:
@@ -64,27 +84,24 @@ def main():
                 #     wall_x += 10
                 # if pos_y_p >= y:
                 #     y += 10
-                #     wall_y += 10
+                #     wall1_y += 10
                 # if y <= plur_w:
                 #     y += 10
-                #     wall_y += 10
-
-
-
+                #     wall1_y += 10
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if ((start_buttons_x_pos <= pos[0] <= start_buttons_x_pos + start_buttons_width) and (
                         start_buttons_y_pos <= pos[1] <= start_buttons_y_pos + start_buttons_height)):
                     Screen_mode = 'game'
 
-
-
         if Screen_mode == 'opening':
             restart_opening_windows()
 
         elif Screen_mode == 'game':
-            game(x, y,wall_x,wall_y)
+            bild_level_1(flur_x, flur_y, walls)
 
         pygame.display.flip()
     pygame.quit()
+
+
 main()

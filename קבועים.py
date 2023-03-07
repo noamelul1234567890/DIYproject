@@ -15,8 +15,8 @@ start_background_x_pos = 0
 start_background_y_pos = 0
 
 #buttons
-start_buttons_x_pos = 230
-start_buttons_y_pos = 200
+start_buttons_x_pos = 150
+start_buttons_y_pos = 150
 start_buttons_width = 200
 start_buttons_height = 70
 
@@ -27,8 +27,8 @@ color = (250,250,250)
 #texts
 start_text_size = 60
 start_text_m = 'start'
-start_text_x_pos = 235
-start_text_y_pos = 205
+start_text_x_pos = 150
+start_text_y_pos = 150
 
 #pleyer
 pleyer_width = 50
@@ -36,8 +36,13 @@ pleyer_height = 50
 
 pos_x = 210
 pos_y = 210
-wall_w = 60
-wall_h = 200
+wall_w = 100
+wall_h = 100
+
+wall_w1 =600
+wall_h1 =10
+wall_w2 = 10
+wall_h2 = 600
 
 
 
