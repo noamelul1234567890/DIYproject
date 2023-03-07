@@ -47,12 +47,16 @@ def main():
             wall4.wall_y -= 10
         if go_up:
             pleyer_image = pleyer_1_image_up
-            for i in range()
+            # for i in range(len(steps)):
+            #     pleyer_image = steps[i]
+            #     bild_level_1(1000,1000,walls,pleyer_image)
+            #     pygame.time.wait(10)
             flur_y += 10
             wall1.wall_y += 10
             wall2.wall_y += 10
             wall3.wall_y += 10
             wall4.wall_y += 10
+            # pygame.display.flip()
         if go_rite:
             pleyer_image = pleyer_1_image_left
             flur_x -= 10
