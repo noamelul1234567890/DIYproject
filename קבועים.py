@@ -39,10 +39,14 @@ pos_y = 210
 wall_w = 100
 wall_h = 100
 
-wall_w1 =600
+wall_w1 =620
 wall_h1 =20
 wall_w2 = 20
-wall_h2 = 600
+wall_h2 = 620
+wall_w3 = 20
+wall_h3 = 620
+wall_w4 = 620
+wall_h4 = 20
 
 
 

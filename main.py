@@ -20,9 +20,14 @@ def main():
     flur_y = 0
     flur_x = 0
 
-    wall1 = wall(0,-20,wall_w1,wall_h1)
-    wall2 = wall(-20,0,wall_w2,wall_h2)
-    walls = [wall1,wall2]
+    wall1 = wall(0,-10,wall_w1,wall_h1)
+    wall2 = wall(-10,0,wall_w2,wall_h2)
+    wall3 = wall(600,-10,wall_w3,wall_h3)
+    wall4 = wall(-10,600,wall_w4,wall_h4)
+
+
+
+    walls = [wall1,wall2,wall3,wall4]
 
 
 
@@ -47,18 +52,26 @@ def main():
                         flur_y -= 10
                         wall1.wall_y -= 10
                         wall2.wall_y -= 10
+                        wall3.wall_y -= 10
+                        wall4.wall_y -= 10
                     if event.key == pygame.K_UP:
                         flur_y += 10
                         wall1.wall_y += 10
                         wall2.wall_y += 10
+                        wall3.wall_y += 10
+                        wall4.wall_y += 10
                     if event.key == pygame.K_RIGHT:
                         flur_x -= 10
                         wall1.wall_x -= 10
                         wall2.wall_x -= 10
+                        wall3.wall_x -= 10
+                        wall4.wall_x -= 10
                     if event.key == pygame.K_LEFT:
                         flur_x += 10
                         wall1.wall_x += 10
                         wall2.wall_x += 10
+                        wall3.wall_x += 10
+                        wall4.wall_x += 10
 
                     wall_num = 1
                     p = limit(flur_x, flur_y, walls)
