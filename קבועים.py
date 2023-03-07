@@ -59,6 +59,11 @@ wall_h4 = 20
 
 FLORE_Y = -350
 FLORE_X = -250
-
+# Create an obstacle
+obstacle_width = 50
+obstacle_height = 50
+obstacle_x = 0
+obstacle_y = 0
+obstacle_speed = 100 # pixels per second
 
 
