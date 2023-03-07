@@ -59,6 +59,7 @@ def limit(flur_x, flur_y, walls):
         flur_y += 5
         walls[1].wall_y += 5
         walls[2].wall_y += 5
+        walls[3].wall_y += 5
     elif (walls[0].wall_x < pos_x + pleyer_width < walls[0].wall_x + wall_w1) and (walls[0].wall_y < pos_y < walls[0].wall_y + wall_h1):
         walls[0].wall_y += 5
         flur_y += 5
