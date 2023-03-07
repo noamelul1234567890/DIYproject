@@ -43,6 +43,7 @@ def bild_level_1(x, y, walls,pleyer_image):
 
 def limit(flur_x, flur_y, walls):
     # wall1
+    pygame.time.wait(20)
 
     if (walls[0].wall_x < pos_x < walls[0].wall_x + wall_w1) and (walls[0].wall_y < pos_y < walls[0].wall_y + wall_h1):
         walls[0].wall_y -= 5
@@ -54,6 +55,8 @@ def limit(flur_x, flur_y, walls):
         walls[0].wall_y += 5
         flur_y += 5
         walls[1].wall_y += 5
+        walls[2].wall_y += 5
+        walls[3].wall_y += 5
     elif (walls[0].wall_x < pos_x < walls[0].wall_x + wall_w1) and (walls[0].wall_y < pos_y + pleyer_height < walls[0].wall_y + wall_h1):
         walls[0].wall_y += 5
         flur_y += 5
@@ -75,7 +78,7 @@ def limit(flur_x, flur_y, walls):
         walls[3].wall_x -= 5
     elif (walls[1].wall_x < pos_x + pleyer_width < walls[1].wall_x + wall_w2) and (walls[1].wall_y < pos_y + pleyer_height < walls[1].wall_y + wall_h2):
         wall_x_p(walls,flur_x)
-    elif (walls[0].wall_x < pos_x < walls[0].wall_x + wall_w2) and (walls[1].wall_y < pos_y + pleyer_height < walls[1].wall_y + wall_h2):
+    elif (walls[1].wall_x < pos_x < walls[1].wall_x + wall_w2) and (walls[1].wall_y < pos_y + pleyer_height < walls[1].wall_y + wall_h2):
         walls[0].wall_x -= 5
         flur_x -= 5
         walls[1].wall_x -= 5
