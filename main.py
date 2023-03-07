@@ -21,11 +21,20 @@ def main():
     flur_y = -350
     flur_x = -250
 
+
+
+
     wall1 = wall(-250, -360, wall_w1, wall_h1)
     wall2 = wall(-260, -350, wall_w2, wall_h2)
     wall3 = wall(350, -360, wall_w3, wall_h3)
     wall4 = wall(-260, 250, wall_w4, wall_h4)
     walls = [wall1, wall2, wall3, wall4]
+
+    line_1 = (80,197,348,197)
+    liness = [line_1]
+
+
+
 
     if Screen_mode == 'level 1':
         w_1 = wall(141,11,0,69)
@@ -35,48 +44,77 @@ def main():
     go_down = False
     go_rite = False
     go_left = False
-    steps = [step1,step2]
+    steps_up = [step1,step2]
+    steps_rite = [step3,step4]
+    steps_down = [step5,step6]
+    steps_left = [step7,step8]
 
     while not finish:
         pygame.time.wait(10)
 
+
+
+
+
+
+
+
+
+
         limit(flur_x,flur_y,walls)
+        # lines(liness, walls, flur_y, flur_x)
         if go_down:
-            pleyer_image = pleyer_1_image_dound
-            flur_y -= 5
-            wall1.wall_y -= 5
-            wall2.wall_y -= 5
-            wall3.wall_y -= 5
-            wall4.wall_y -= 5
+            for i in range(len(steps_down)):
+                pleyer_image = steps_down[i]
+                pygame.time.wait(50)
+                bild_level_1(1000, 1000, walls, pleyer_image)
+                flur_y -= 5
+                wall1.wall_y -= 5
+                wall2.wall_y -= 5
+                wall3.wall_y -= 5
+                wall4.wall_y -= 5
+                pygame.display.flip()
+
         if go_up:
-            pleyer_image = pleyer_1_image_up
-            # for i in range(len(steps)):
-            #     pleyer_image = steps[i]
-            #     bild_level_1(1000,1000,walls,pleyer_image)
-            #     pygame.time.wait(10)
-            flur_y += 5
-            wall1.wall_y += 5
-            wall2.wall_y += 5
-            wall3.wall_y += 5
-            wall4.wall_y += 5
-            # pygame.display.flip()
+            for i in range(len(steps_up)):
+                pleyer_image = steps_up[i]
+                pygame.time.wait(50)
+                bild_level_1(1000,1000,walls,pleyer_image)
+                flur_y += 5
+                wall1.wall_y += 5
+                wall2.wall_y += 5
+                wall3.wall_y += 5
+                wall4.wall_y += 5
+                pygame.display.flip()
         if go_rite:
-            pleyer_image = pleyer_1_image_left
-            flur_x -= 5
-            wall1.wall_x -= 5
-            wall2.wall_x -= 5
-            wall3.wall_x -= 5
-            wall4.wall_x -= 5
+            for i in range(len(steps_rite)):
+                pleyer_image = steps_rite[i]
+                pygame.time.wait(50)
+                bild_level_1(1000, 1000, walls, pleyer_image)
+                flur_y -= 5
+                wall1.wall_x -= 5
+                wall2.wall_x -= 5
+                wall3.wall_x -= 5
+                wall4.wall_x -= 5
+                pygame.display.flip()
+
         if go_left:
-            pleyer_image = pleyer_1_image_rire
-            flur_x += 5
-            wall1.wall_x += 5
-            wall2.wall_x += 5
-            wall3.wall_x += 5
-            wall4.wall_x += 5
+            for i in range(len(steps_left)):
+                pleyer_image = steps_left[i]
+                pygame.time.wait(50)
+                bild_level_1(1000, 1000, walls, pleyer_image)
+                flur_y += 5
+                wall1.wall_x += 5
+                wall2.wall_x += 5
+                wall3.wall_x += 5
+                wall4.wall_x += 5
+                pygame.display.flip()
+
+
 
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
+
 
 
             if event.type == pygame.QUIT:

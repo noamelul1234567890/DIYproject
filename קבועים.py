@@ -9,14 +9,21 @@ pleyer_1_image_rire = 'Images//pleyr123456.png'
 pleyer_1_image_dound ='Images//pleyer_11.png'
 step1 = 'Images//step1.png'
 step2 = 'Images//step2.png'
+step3 = 'Images//step3.png'
+step4 = 'Images//step4.png'
+step5 = 'Images//step5.png'
+step6 = 'Images//step6.png'
+step7 = 'Images//step7.png'
+step8 = 'Images//step8.png'
+
 WINDOW_HEIGHT = 500
 WINDOW_WIDTH = 500
 
 plur_w = 600
 plur_h = 600
 
-start_background_width = 700
-start_background_height = 550
+start_background_width = 600
+start_background_height = 600
 start_background_x_pos = 0
 start_background_y_pos = 0
 

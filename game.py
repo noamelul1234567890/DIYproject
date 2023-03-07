@@ -5,10 +5,10 @@ from classs import *
 screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), pygame.RESIZABLE)
 
 
-def bild_level_1(x, y, walls,pleyer_image):
+def bild_level_1(x, y, walls,pleyer_image,):
     img = pygame.image.load(plur_image)
     img = pygame.transform.scale(img, (plur_w, plur_h))
-    screen.blit(img, (x, y))
+    screen.blit(img, (walls[0].wall_x, walls[0].wall_y))
     # wall image
     img = pygame.image.load(wall_image)
     img = pygame.transform.scale(img, (wall_w1, wall_h1))
@@ -30,6 +30,8 @@ def bild_level_1(x, y, walls,pleyer_image):
     rect.set_alpha(50)
     rect.fill((0, 0, 0))
     screen.blit(rect, (0, 0))
+
+
 
     # player
 
@@ -143,3 +145,11 @@ def walls_in_level_1(walls_level_1):
         # walls_level_1[0].wall_y -= 5
         print(1)
 
+# def lines(lines,walls,flur_y,flur_x):
+#     if (lines[0].x_start < pos_x < lines[0].x_end) and (lines[0].y_start < pos_y < lines[0].y_end):
+#         lines[0].y_start -= 5
+#         walls[0].wall_y -= 5
+#         flur_y -= 5
+#         walls[1].wall_y -= 5
+#         walls[2].wall_y -= 5
+#         walls[3].wall_y -= 5

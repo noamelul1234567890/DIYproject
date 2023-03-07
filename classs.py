@@ -7,7 +7,28 @@ class wall:
         self.wall_y = wall_y
         self.wall_w = wall_w
         self.wall_h = wall_h
-# import pygame
+
+class line_wall:
+    def __init__(self,x_start,y_start,x_end,y_end):
+        self.x_start = x_start
+        self.y_start = y_start
+        self.x_end = x_end
+        self.y_end = y_end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# import pyga
 # import random
 #
 # class Obstacle:
