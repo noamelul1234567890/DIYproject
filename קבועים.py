@@ -55,4 +55,10 @@ wall_w4 = 620
 wall_h4 = 20
 
 
+#start position
+
+FLORE_Y = -350
+FLORE_X = -250
+
+
 

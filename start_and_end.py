@@ -1,8 +1,6 @@
-from main import *
-from קבועים import *
-from game import *
-def end():
-    if ((50 < 210 < 50 + x) and
-            (50 <= 210 <=
-             50 + y)):
-        return True
+import pygame
+def end_2(flore_x, flore_y):
+        if 150 <= flore_x <= 200 and 180 <= flore_y <= 260:
+                return True
+        else:
+                return False
