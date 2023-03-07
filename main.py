@@ -12,6 +12,7 @@ y = 0
 
 def main():
     global screen, Screen_mode
+
     screen_size = (WINDOW_WIDTH, WINDOW_HEIGHT)
     screen = pygame.display.set_mode(screen_size)
     pygame.init()
@@ -37,40 +38,42 @@ def main():
     steps = [step1,step2]
 
     while not finish:
+        pygame.time.wait(10)
+
         limit(flur_x,flur_y,walls)
         if go_down:
             pleyer_image = pleyer_1_image_dound
-            flur_y -= 10
-            wall1.wall_y -= 10
-            wall2.wall_y -= 10
-            wall3.wall_y -= 10
-            wall4.wall_y -= 10
+            flur_y -= 5
+            wall1.wall_y -= 5
+            wall2.wall_y -= 5
+            wall3.wall_y -= 5
+            wall4.wall_y -= 5
         if go_up:
             pleyer_image = pleyer_1_image_up
             # for i in range(len(steps)):
             #     pleyer_image = steps[i]
             #     bild_level_1(1000,1000,walls,pleyer_image)
             #     pygame.time.wait(10)
-            flur_y += 10
-            wall1.wall_y += 10
-            wall2.wall_y += 10
-            wall3.wall_y += 10
-            wall4.wall_y += 10
+            flur_y += 5
+            wall1.wall_y += 5
+            wall2.wall_y += 5
+            wall3.wall_y += 5
+            wall4.wall_y += 5
             # pygame.display.flip()
         if go_rite:
             pleyer_image = pleyer_1_image_left
-            flur_x -= 10
-            wall1.wall_x -= 10
-            wall2.wall_x -= 10
-            wall3.wall_x -= 10
-            wall4.wall_x -= 10
+            flur_x -= 5
+            wall1.wall_x -= 5
+            wall2.wall_x -= 5
+            wall3.wall_x -= 5
+            wall4.wall_x -= 5
         if go_left:
             pleyer_image = pleyer_1_image_rire
-            flur_x += 10
-            wall1.wall_x += 10
-            wall2.wall_x += 10
-            wall3.wall_x += 10
-            wall4.wall_x += 10
+            flur_x += 5
+            wall1.wall_x += 5
+            wall2.wall_x += 5
+            wall3.wall_x += 5
+            wall4.wall_x += 5
 
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
