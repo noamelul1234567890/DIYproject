@@ -1,10 +1,11 @@
 import pygame
+from start_and_end import end_2
 from classs import *
 from game import *
 from opening import *
 import random
 from קבועים import *
-from start_and_end import *
+
 
 Screen_mode = 'opening'
 x = 0
@@ -31,6 +32,10 @@ def main():
     if Screen_mode == 'level 1':
         w_1 = wall(141,11,0,69)
         # wall_level_1 = [w_1]
+    if Screen_mode == 'level 2':
+        w_1 = wall(141, 11, 0, 69)
+
+
     pleyer_image = pleyer_1_image_up
 
 
@@ -87,10 +92,12 @@ def main():
                     # flur_y = p[1]
                     # walls_x[2] = p[2]
                     # walls_y[2] = p[3]
-                the_end = end_2(flore_x, flore_y)
-                if the_end:
-                    main()
-                    pygame.display.flip()
+                    the_end = end_2(flore_x,flore_y)
+                    if the_end:
+                        Screen_mode = 'level 2'
+                        main()
+
+                        pygame.display.flip()
 
 
 
