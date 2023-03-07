@@ -1,6 +1,6 @@
 import pygame
 from classs import *
-from flor1 import *
+from game import *
 from opening import *
 import random
 from קבועים import *
@@ -17,13 +17,13 @@ def main():
     pygame.init()
     finish = False
 
-    flur_y = 0
-    flur_x = 0
+    flur_y = -350
+    flur_x = -250
 
-    wall1 = wall(0, -10, wall_w1, wall_h1)
-    wall2 = wall(-10, 0, wall_w2, wall_h2)
-    wall3 = wall(600, -10, wall_w3, wall_h3)
-    wall4 = wall(-10, 600, wall_w4, wall_h4)
+    wall1 = wall(-250, -360, wall_w1, wall_h1)
+    wall2 = wall(-260, -350, wall_w2, wall_h2)
+    wall3 = wall(350, -360, wall_w3, wall_h3)
+    wall4 = wall(-260, 250, wall_w4, wall_h4)
     walls = [wall1, wall2, wall3, wall4]
 
     if Screen_mode == 'level 1':
