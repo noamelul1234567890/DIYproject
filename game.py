@@ -40,44 +40,46 @@ def bild_level_1(x, y, walls,pleyer_image):
     screen.blit(img, (pos_x, pos_y))
 
 
+
 def limit(flur_x, flur_y, walls):
     # wall1
 
     if (walls[0].wall_x < pos_x < walls[0].wall_x + wall_w1) and (walls[0].wall_y < pos_y < walls[0].wall_y + wall_h1):
-        walls[0].wall_y -= 10
-        flur_y -= 10
-        walls[1].wall_y -= 10
-        walls[2].wall_y -= 10
+        walls[0].wall_y -= 5
+        flur_y -= 5
+        walls[1].wall_y -= 5
+        walls[2].wall_y -= 5
+        walls[3].wall_y -= 5
     elif (walls[0].wall_x < pos_x + pleyer_width < walls[0].wall_x + wall_w1) and (walls[0].wall_y < pos_y + pleyer_height < walls[0].wall_y + wall_h1):
-        walls[0].wall_y += 10
-        flur_y += 10
-        walls[1].wall_y += 10
+        walls[0].wall_y += 5
+        flur_y += 5
+        walls[1].wall_y += 5
     elif (walls[0].wall_x < pos_x < walls[0].wall_x + wall_w1) and (walls[0].wall_y < pos_y + pleyer_height < walls[0].wall_y + wall_h1):
-        walls[0].wall_y += 10
-        flur_y += 10
-        walls[1].wall_y += 10
-        walls[2].wall_y += 10
+        walls[0].wall_y += 5
+        flur_y += 5
+        walls[1].wall_y += 5
+        walls[2].wall_y += 5
     elif (walls[0].wall_x < pos_x + pleyer_width < walls[0].wall_x + wall_w1) and (walls[0].wall_y < pos_y < walls[0].wall_y + wall_h1):
-        walls[0].wall_y += 10
-        flur_y += 10
-        walls[1].wall_y += 10
-        walls[2].wall_y += 10
-        walls[3].wall_y += 10
+        walls[0].wall_y += 5
+        flur_y += 5
+        walls[1].wall_y += 5
+        walls[2].wall_y += 5
+        walls[3].wall_y += 5
     # wall2
     elif (walls[1].wall_x < pos_x < walls[1].wall_x + wall_w2) and (walls[1].wall_y < pos_y < walls[1].wall_y + wall_h2):
-        flur_x -= 10
-        walls[1].wall_x -= 10
-        walls[0].wall_x -= 10
-        walls[2].wall_x -= 10
-        walls[3].wall_x -= 10
+        flur_x -= 5
+        walls[1].wall_x -= 5
+        walls[0].wall_x -= 5
+        walls[2].wall_x -= 5
+        walls[3].wall_x -= 5
     elif (walls[1].wall_x < pos_x + pleyer_width < walls[1].wall_x + wall_w2) and (walls[1].wall_y < pos_y + pleyer_height < walls[1].wall_y + wall_h2):
         wall_x_p(walls,flur_x)
     elif (walls[0].wall_x < pos_x < walls[0].wall_x + wall_w2) and (walls[1].wall_y < pos_y + pleyer_height < walls[1].wall_y + wall_h2):
-        walls[0].wall_x -= 10
-        flur_x -= 10
-        walls[1].wall_x -= 10
-        walls[2].wall_x -= 10
-        walls[3].wall_x -= 10
+        walls[0].wall_x -= 5
+        flur_x -= 5
+        walls[1].wall_x -= 5
+        walls[2].wall_x -= 5
+        walls[3].wall_x -= 5
     elif (walls[0].wall_x < pos_x + pleyer_width < walls[0].wall_x + wall_w2) and (walls[1].wall_y < pos_y < walls[1].wall_y + wall_h2):
         wall_x_p(walls, flur_x)
 
@@ -94,35 +96,46 @@ def limit(flur_x, flur_y, walls):
 #wall4
         # wall2
     elif (walls[3].wall_x < pos_x < walls[3].wall_x + wall_w4) and (walls[3].wall_y < pos_y < walls[3].wall_y + wall_h4):
-        flur_x -= 10
-        walls[1].wall_x -= 10
-        walls[0].wall_x -= 10
-        walls[2].wall_x -= 10
-        walls[3].wall_x -= 10
+
+        walls[0].wall_y += 5
+        flur_y += 5
+        walls[1].wall_y += 5
+        walls[2].wall_y += 5
+        walls[3].wall_y += 5
     elif (walls[3].wall_x < pos_x + pleyer_width < walls[3].wall_x + wall_w4) and (walls[3].wall_y < pos_y + pleyer_height < walls[3].wall_y + wall_h4):
-        wall_x_p(walls,flur_x)
+        walls[0].wall_y += 5
+        flur_y += 5
+        walls[1].wall_y += 5
+        walls[2].wall_y += 5
+        walls[3].wall_y += 5
     elif (walls[3].wall_x < pos_x < walls[3].wall_x + wall_w4) and (walls[3].wall_y < pos_y + pleyer_height < walls[3].wall_y + wall_h4):
-        walls[0].wall_x -= 10
-        flur_x -= 10
-        walls[1].wall_x -= 10
-        walls[2].wall_x -= 10
-        walls[3].wall_x -= 10
+        walls[0].wall_y += 5
+        flur_y += 5
+        walls[1].wall_y += 5
+        walls[2].wall_y += 5
+        walls[3].wall_y += 5
     elif (walls[3].wall_x < pos_x + pleyer_width < walls[3].wall_x + wall_w4) and (walls[3].wall_y < pos_y < walls[3].wall_y + wall_h4):
-        wall_x_p(walls,flur_x)
+        walls[0].wall_y += 5
+        flur_y += 5
+        walls[1].wall_y += 5
+        walls[2].wall_y += 5
+        walls[3].wall_y += 5
+
 
 
     p = [flur_x, flur_y, walls]
     return p
 
 def wall_x_p(walls,flur_x):
-    walls[1].wall_x += 10
-    flur_x += 10
-    walls[0].wall_x += 10
-    walls[2].wall_x += 10
-    walls[3].wall_x += 10
+    walls[1].wall_x += 5
+    flur_x += 5
+    walls[0].wall_x += 5
+    walls[2].wall_x += 5
+    walls[3].wall_x += 5
 
 
 def walls_in_level_1(walls_level_1):
     if (walls_level_1[0].wall_x < pos_x < walls_level_1[0].wall_x + wall_w1) and (walls_level_1[0].wall_y < pos_y < walls_level_1[0].wall_y + wall_h1):
-        walls_level_1[0].wall_y -= 10
+        # walls_level_1[0].wall_y -= 5
+        print(1)
 
