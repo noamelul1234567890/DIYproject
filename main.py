@@ -43,9 +43,11 @@ def main():
     while not finish:
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
+
             if event.type == pygame.QUIT:
                 finish = True
             if event.type == pygame.KEYUP:
+
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_DOWN:
                         pleyer_image = pleyer_1_image_dound
@@ -54,6 +56,7 @@ def main():
                         wall2.wall_y -= 10
                         wall3.wall_y -= 10
                         wall4.wall_y -= 10
+
 
                     if event.key == pygame.K_UP:
                         pleyer_image = pleyer_1_image_up
