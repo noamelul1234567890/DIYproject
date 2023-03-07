@@ -20,9 +20,8 @@ def main():
     flur_y = 0
     flur_x = 0
 
-    wall1 = wall(0,0,wall_w1,wall_h1)
-    wall2 = wall(0,0,wall_w2,wall_h2)
-
+    wall1 = wall(0,-20,wall_w1,wall_h1)
+    wall2 = wall(-20,0,wall_w2,wall_h2)
     walls = [wall1,wall2]
 
 
@@ -65,8 +64,7 @@ def main():
                     p = limit(flur_x, flur_y, walls)
                     flur_x = p[0]
                     flur_y = p[1]
-                    walls[0].wall_x = p[2][0].wall_x
-                    walls[0].wall_y = p[2][0].wall_y
+                    walls = p[2]
 
 
                     wall_num = 2

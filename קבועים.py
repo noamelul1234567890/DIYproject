@@ -40,9 +40,10 @@ wall_w = 100
 wall_h = 100
 
 wall_w1 =600
-wall_h1 =10
-wall_w2 = 10
+wall_h1 =20
+wall_w2 = 20
 wall_h2 = 600
+
 
 
 

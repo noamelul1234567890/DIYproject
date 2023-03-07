@@ -1,5 +1,5 @@
-from קבועים import *
 import pygame
+
 from classs import *
 
 screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), pygame.RESIZABLE)
@@ -29,8 +29,9 @@ def bild_level_1(x, y, walls):
 
 
 def limit(flur_x, flur_y, walls):
+    # wall1
+    print((walls[0].wall_x < pos_x < walls[0].wall_x + wall_w1) and (walls[0].wall_y < pos_y < walls[0].wall_y + wall_h1))
 
-    #wall1
     if (walls[0].wall_x < pos_x < walls[0].wall_x + wall_w1) and (walls[0].wall_y < pos_y < walls[0].wall_y + wall_h1):
         walls[0].wall_y -= 10
         flur_y -= 10
@@ -38,28 +39,31 @@ def limit(flur_x, flur_y, walls):
         walls[0].wall_x -= 10
         walls[1].wall_x -= 10
         walls[1].wall_y -= 10
-    elif (walls[0].wall_x < pos_x + pleyer_width < walls[0].wall_x + wall_w1) and (walls[0].wall_y < pos_y + pleyer_height < walls[0].wall_y + wall_h1):
+    elif (walls[0].wall_x < pos_x + pleyer_width < walls[0].wall_x + wall_w1) and (
+            walls[0].wall_y < pos_y + pleyer_height < walls[0].wall_y + wall_h1):
         walls[0].wall_x += 10
         walls[0].wall_y += 10
         flur_x += 10
         flur_y += 10
         walls[1].wall_x += 10
         walls[1].wall_y += 10
-    elif (walls[0].wall_x < pos_x < walls[0].wall_x + wall_w1) and (walls[0].wall_y < pos_y + pleyer_height < walls[0].wall_y + wall_h1):
+    elif (walls[0].wall_x < pos_x < walls[0].wall_x + wall_w1) and (
+            walls[0].wall_y < pos_y + pleyer_height < walls[0].wall_y + wall_h1):
         walls[0].wall_x -= 10
         walls[0].wall_y += 10
         flur_x -= 10
         flur_y += 10
         walls[1].wall_x -= 10
         walls[1].wall_y += 10
-    elif (walls[0].wall_x < pos_x + pleyer_width < walls[0].wall_x + wall_w1) and (walls[0].wall_y < pos_y < walls[0].wall_y + wall_h1):
+    elif (walls[0].wall_x < pos_x + pleyer_width < walls[0].wall_x + wall_w1) and (
+            walls[0].wall_y < pos_y < walls[0].wall_y + wall_h1):
         walls[0].wall_x += 10
         walls[0].wall_y += 10
         flur_x += 10
         flur_y += 10
         walls[1].wall_x += 10
         walls[1].wall_y += 10
-    #wall2
+    # wall2
     elif (walls[1].wall_x < pos_x < walls[1].wall_x + wall_w2) and (walls[1].wall_y < pos_y < walls[1].wall_y + wall_h2):
         walls[1].wall_y -= 10
         flur_y -= 10
@@ -88,8 +92,6 @@ def limit(flur_x, flur_y, walls):
         flur_y += 10
         walls[0].wall_x += 10
         walls[0].wall_y += 10
-
-
 
     p = [flur_x, flur_y, walls]
     return p
