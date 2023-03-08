@@ -1,7 +1,7 @@
 import Images
 
 start_background = "Images//OIP.jpg"
-plur_image = 'Images//flore.jpg'
+plur_image = 'Images//r.png'
 wall_image = 'Images//wall.jpg'
 pleyer_1_image_up ='Images//pleyer_1.png'
 pleyer_1_image_left ='Images//pleyer1234567.png'
@@ -15,6 +15,10 @@ step5 = 'Images//step5.png'
 step6 = 'Images//step6.png'
 step7 = 'Images//step7.png'
 step8 = 'Images//step8.png'
+coin = 'Images//coin.png'
+koz_of = 'Images//__kozim-removebg-preview.png'
+koz_on = 'Images//__kozim_on-removebg-preview.png'
+
 
 WINDOW_HEIGHT = 500
 WINDOW_WIDTH = 500
@@ -47,7 +51,7 @@ start_text_y_pos = 150
 pleyer_width = 50
 pleyer_height = 50
 
-pos_x = 210
+pos_x: int = 210
 pos_y = 210
 wall_w = 100
 wall_h = 100
@@ -66,6 +70,11 @@ wall_h4 = 20
 
 FLORE_Y = -350
 FLORE_X = -250
-
+# Create an obstacle
+obstacle_width = 50
+obstacle_height = 50
+obstacle_x = 0
+obstacle_y = 0
+obstacle_speed = 100 # pixels per second
 
 

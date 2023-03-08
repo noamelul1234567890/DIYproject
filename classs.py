@@ -1,4 +1,5 @@
 from קבועים import *
+import pygame
 
 class wall:
 
@@ -7,6 +8,7 @@ class wall:
         self.wall_y = wall_y
         self.wall_w = wall_w
         self.wall_h = wall_h
+
 
 class line_wall:
     def __init__(self,x_start,y_start,x_end,y_end):
@@ -93,6 +95,31 @@ class line_wall:
 #
 #     # Update the screen
 #     pygame.display.update()
+
+class Obstacle:
+    def __init__(self, x, y, speed, width, height):
+        self.x = x
+        self.y = y
+        self.speed = speed
+        self.width = width
+        self.height = height
+        self.image = pygame.Surface((self.width, self.height))
+        self.image.fill((255, 0, 0)) # Fill the obstacle with red color
+        self.direction = 1 # Initial direction is right
+
+    def update(self, dt):
+        # Move the obstacle horizontally
+        self.x += self.speed * self.direction * dt
+
+        # Check if the obstacle has reached the edges of the screen
+        if self.x <= 0:
+            self.direction = 1 # Change direction to right
+        elif self.x >= 60 :
+            self.direction = -1 # Change direction to left
+
+    def draw(self, surface):
+        surface.blit(self.image, (self.x, self.y))
+
 
 
 
