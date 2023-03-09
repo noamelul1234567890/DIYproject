@@ -13,7 +13,7 @@ y = 0
 
 
 def main():
-    global screen, Screen_mode
+    global screen, Screen_mode, event, pos
 
     screen_size = (WINDOW_WIDTH, WINDOW_HEIGHT)
     screen = pygame.display.set_mode(screen_size)
@@ -23,6 +23,14 @@ def main():
     flur_y = -350
     flur_x = -250
 
+    levels_screen_x = 0
+    levels_screen_y = 0
+    levels_screen_w = 600
+    levels_screen_h = 600
+
+    levels_2_x = -600
+    levels_2_y = -600
+    levels_2 =[levels_2_x,levels_2_y]
 
     # walls of level 1
     wall1 = wall(-200, -360, wall_w1, wall_h1)
@@ -42,6 +50,7 @@ def main():
     kosim = [koz_1]
 
 
+
     pleyer_image = pleyer_1_image_up
     go_up = False
     go_down = False
@@ -58,26 +67,26 @@ def main():
 
     while not finish:
 
-        pos = pygame.mouse.get_pos()
-
-
 
         pygame.time.wait(10)
 
         if Screen_mode == 'level 1':
-            limit(flur_x,flur_y,walls,coins,walls_level_1)
-        # lines(liness, walls, flur_y, flur_x)
+            limit(flur_x,flur_y,walls,coins,walls_level_1,Screen_mode,levels_2)
+
         if go_down:
             for i in range(len(steps_down)):
                 pleyer_image = steps_down[i]
                 pygame.time.wait(1)
                 if Screen_mode == 'level 1':
                     bild_level_1(1000, 1000, walls, pleyer_image, coins)
-                    limit(flur_x, flur_y, walls, coins,walls_level_1)
-                all_y_up(walls, flur_y, coins,walls_level_1)
+                    limit(flur_x, flur_y, walls, coins,walls_level_1,Screen_mode,levels_2)
+                if Screen_mode == 'level 2':
+                    bild_level_2(pleyer_image)
+
+                all_y_up(walls, flur_y, coins,walls_level_1,Screen_mode,levels_2)
                 color = pygame.Surface.get_at(screen, (pos_x + pleyer_width // 2, pos_y + pleyer_height - 7))
                 if color == (0,0,0,255):
-                    all_y_down(walls, flur_y, coins, walls_level_1)
+                    all_y_down(walls, flur_y, coins, walls_level_1,Screen_mode,levels_2)
                     break
                 pygame.display.flip()
 
@@ -87,11 +96,13 @@ def main():
                 pygame.time.wait(1)
                 if Screen_mode == 'level 1':
                     bild_level_1(1000, 1000, walls, pleyer_image, coins)
-                    limit(flur_x, flur_y, walls, coins,walls_level_1)
-                all_y_down(walls, flur_y, coins,walls_level_1)
+                    limit(flur_x, flur_y, walls, coins,walls_level_1,Screen_mode,levels_2)
+                if Screen_mode == 'level 2':
+                    bild_level_2(pleyer_image)
+                all_y_down(walls, flur_y, coins,walls_level_1,Screen_mode,levels_2)
                 color = pygame.Surface.get_at(screen, (pos_x + pleyer_width // 2, pos_y +7))
                 if color == (0,0,0,255):
-                    all_y_up(walls, flur_y, coins, walls_level_1)
+                    all_y_up(walls, flur_y, coins, walls_level_1,Screen_mode,levels_2)
                     break
                 pygame.display.flip()
         if go_rite:
@@ -100,11 +111,13 @@ def main():
                 pygame.time.wait(1)
                 if Screen_mode == 'level 1':
                     bild_level_1(1000, 1000, walls, pleyer_image, coins)
-                    limit(flur_x, flur_y, walls, coins,walls_level_1)
-                all_x_left(walls, flur_x, coins,walls_level_1)
-                color = pygame.Surface.get_at(screen, (pos_x + pleyer_width - 7, pos_y))
+                    limit(flur_x, flur_y, walls, coins,walls_level_1,Screen_mode,levels_2)
+                if Screen_mode == 'level 2':
+                    bild_level_2(pleyer_image)
+                all_x_left(walls, flur_x, coins,walls_level_1,Screen_mode,levels_2)
+                color = pygame.Surface.get_at(screen, (pos_x + pleyer_width - 7, pos_y + pleyer_height // 2))
                 if color == (0,0,0,255):
-                    all_x_rite(walls, flur_y, coins, walls_level_1)
+                    all_x_rite(walls, flur_y, coins, walls_level_1,Screen_mode,levels_2)
                     break
                 pygame.display.flip()
 
@@ -114,11 +127,13 @@ def main():
                 pygame.time.wait(1)
                 if Screen_mode == 'level 1':
                     bild_level_1(1000, 1000, walls, pleyer_image,coins)
-                    limit(flur_x, flur_y, walls, coins,walls_level_1)
-                all_x_rite(walls, flur_x, coins,walls_level_1)
+                    limit(flur_x, flur_y, walls, coins,walls_level_1,Screen_mode,levels_2)
+                if Screen_mode == 'level 2':
+                    bild_level_2(pleyer_image)
+                all_x_rite(walls, flur_x, coins,walls_level_1,Screen_mode,levels_2)
                 color = pygame.Surface.get_at(screen, (pos_x + 7, pos_y + pleyer_height // 2))
                 if color == (0, 0, 0, 255):
-                    all_x_left(walls, flur_y, coins, walls_level_1)
+                    all_x_left(walls, flur_y, coins, walls_level_1,Screen_mode,levels_2)
                     break
                 pygame.display.flip()
 
@@ -149,7 +164,7 @@ def main():
 
 
                 wall_num = 1
-                p = limit(flur_x, flur_y, walls,coins,walls_level_1)
+                p = limit(flur_x, flur_y, walls,coins,walls_level_1,Screen_mode,levels_2)
                 flur_x = p[0]
                 flur_y = p[1]
                 walls = p[2]
@@ -165,14 +180,34 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if ((start_buttons_x_pos <= pos[0] <= start_buttons_x_pos + start_buttons_width) and (
                         start_buttons_y_pos <= pos[1] <= start_buttons_y_pos + start_buttons_height)):
-                    Screen_mode = 'level 1'
+                    Screen_mode = 'levels'
+
+
+
 
         if Screen_mode == 'opening':
             restart_opening_windows()
 
+        elif Screen_mode == 'levels':
+            levels_screen(levels_screen_x,levels_screen_y,levels_screen_w,levels_screen_h)
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if (30 <= pos[0] <= 90) and (30 <= pos[1] <= 90):
+                    Screen_mode = 'level 1'
+
+                if (30+90 <= pos[0] <= 90+90) and (30 <= pos[1] <= 90):
+                    Screen_mode = 'level 2'
+
+                if (30 <= pos[0] <= 130) and (400 <= pos[1] <= 460):
+                    Screen_mode = 'opening'
+
+
         elif Screen_mode == 'level 1':
             bild_level_1(flur_x, flur_y, walls,pleyer_image,coins)
             color = pygame.Surface.get_at(screen,(100,100))
+
+        elif Screen_mode == 'level 2':
+            levels_screen(levels_screen_x,levels_screen_y,levels_screen_w,levels_screen_h)
+            bild_level_2(pleyer_image)
 
 
 

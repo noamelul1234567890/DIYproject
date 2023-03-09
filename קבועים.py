@@ -16,6 +16,8 @@ step6 = 'Images//step6.png'
 step7 = 'Images//step7.png'
 step8 = 'Images//step8.png'
 coin = 'Images//coin.png'
+level2_image = 'Images//level_2.png'
+bake_botom_image = 'Images//botom_bake.png'
 koz_of = 'Images//__kozim-removebg-preview.png'
 koz_on = 'Images//__kozim_on-removebg-preview.png'
 
@@ -37,6 +39,10 @@ start_buttons_y_pos = 150
 start_buttons_width = 200
 start_buttons_height = 70
 
+start_level1_buttons_x_pos = 30
+start_level1_buttons_y_pos = 30
+start_level1_buttons_width = 60
+start_level1_buttons_height = 60
 #colors
 COLOR = (50,50,50)
 color = (250,250,250)

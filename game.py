@@ -7,6 +7,44 @@ from classs import *
 screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), pygame.RESIZABLE)
 
 
+def levels_screen(levels_screen_x,levels_screen_y,levels_screen_w,levels_screen_h):
+    square = pygame.Rect(levels_screen_x, levels_screen_y,levels_screen_w, levels_screen_h)
+    pygame.draw.rect(screen, (200,200,250), square)
+
+    square = pygame.Rect(start_level1_buttons_x_pos + 90, start_level1_buttons_y_pos , start_level1_buttons_width, start_level1_buttons_height)
+    pygame.draw.rect(screen, (100, 100, 250), square)
+
+    square = pygame.Rect(start_level1_buttons_x_pos, start_level1_buttons_y_pos, start_level1_buttons_width,start_level1_buttons_height)
+    pygame.draw.rect(screen, (100, 100, 250), square)
+
+    font = pygame.font.SysFont(None,100)
+    text = font.render('1', True, color)
+    screen.blit(text, [start_level1_buttons_x_pos + 10, start_level1_buttons_y_pos + 3])
+
+    font = pygame.font.SysFont(None, 100)
+    text = font.render('2', True, color)
+    screen.blit(text, [start_level1_buttons_x_pos + 100, start_level1_buttons_y_pos + 3])
+
+    img = pygame.image.load(bake_botom_image)
+    img = pygame.transform.scale(img, (100, 60))
+    screen.blit(img, (30, 400))
+
+
+
+def bild_level_2(pleyer_image):
+    img = pygame.image.load(level2_image)
+    img = pygame.transform.scale(img, (1000, 1000))
+    screen.blit(img, (-200, -200))
+
+    img = pygame.image.load(pleyer_image)
+    img = pygame.transform.scale(img, (pleyer_width, pleyer_height))
+    screen.blit(img, (pos_x, pos_y))
+
+
+
+
+
+
 def bild_level_1(x, y, walls, pleyer_image, coins):
     img = pygame.image.load(plur_image)
     img = pygame.transform.scale(img, (plur_w, plur_h))
@@ -51,64 +89,64 @@ def bild_level_1(x, y, walls, pleyer_image, coins):
     screen.blit(img, (pos_x, pos_y))
 
 
-def limit(flur_x, flur_y, walls, coins,walls_level_1):
+def limit(flur_x, flur_y, walls, coins,walls_level_1,Screen_mode,levels_2):
     # wall1
     pygame.time.wait(20)
     # walls_in_level_1(walls_level_1,flur_x, flur_y, walls,coins)
     if (walls[0].wall_x < pos_x < walls[0].wall_x + wall_w1) and (walls[0].wall_y < pos_y < walls[0].wall_y + wall_h1):
-        all_y_up(walls, flur_y, coins,walls_level_1)
+        all_y_up(walls, flur_y, coins,walls_level_1,Screen_mode,levels_2)
     elif (walls[0].wall_x < pos_x + pleyer_width < walls[0].wall_x + wall_w1) and (
             walls[0].wall_y < pos_y + pleyer_height < walls[0].wall_y + wall_h1):
-        all_y_down(walls, flur_y, coins,walls_level_1)
+        all_y_down(walls, flur_y, coins,walls_level_1,Screen_mode,levels_2)
     elif (walls[0].wall_x < pos_x < walls[0].wall_x + wall_w1) and (
             walls[0].wall_y < pos_y + pleyer_height < walls[0].wall_y + wall_h1):
-        all_y_down(walls, flur_y, coins,walls_level_1)
+        all_y_down(walls, flur_y, coins,walls_level_1,Screen_mode,levels_2)
     elif (walls[0].wall_x < pos_x + pleyer_width < walls[0].wall_x + wall_w1) and (
             walls[0].wall_y < pos_y < walls[0].wall_y + wall_h1):
-        all_y_down(walls, flur_y, coins,walls_level_1)
+        all_y_down(walls, flur_y, coins,walls_level_1,Screen_mode,levels_2)
 
     # wall2
     elif (walls[1].wall_x < pos_x < walls[1].wall_x + wall_w2) and (
             walls[1].wall_y < pos_y < walls[1].wall_y + wall_h2):
-        all_x_left(walls, flur_x, coins,walls_level_1)
+        all_x_left(walls, flur_x, coins,walls_level_1,Screen_mode,levels_2)
     elif (walls[1].wall_x < pos_x + pleyer_width < walls[1].wall_x + wall_w2) and (
             walls[1].wall_y < pos_y + pleyer_height < walls[1].wall_y + wall_h2):
-        all_x_rite(walls, flur_x, coins,walls_level_1)
+        all_x_rite(walls, flur_x, coins,walls_level_1,Screen_mode,levels_2)
     elif (walls[1].wall_x < pos_x < walls[1].wall_x + wall_w2) and (
             walls[1].wall_y < pos_y + pleyer_height < walls[1].wall_y + wall_h2):
-        all_x_left(walls, flur_x, coins,walls_level_1)
+        all_x_left(walls, flur_x, coins,walls_level_1,Screen_mode,levels_2)
     elif (walls[0].wall_x < pos_x + pleyer_width < walls[0].wall_x + wall_w2) and (
             walls[1].wall_y < pos_y < walls[1].wall_y + wall_h2):
-        all_x_rite(walls, flur_x, coins,walls_level_1)
+        all_x_rite(walls, flur_x, coins,walls_level_1,Screen_mode,levels_2)
 
     # wall3
     elif (walls[2].wall_x < pos_x < walls[2].wall_x + wall_w3) and (walls[2].wall_y < pos_y < walls[2].wall_y + wall_h3):
-        all_x_rite(walls, flur_x, coins,walls_level_1)
+        all_x_rite(walls, flur_x, coins,walls_level_1,Screen_mode,levels_2)
     elif (walls[2].wall_x < pos_x + pleyer_width < walls[2].wall_x + wall_w3) and (
             walls[2].wall_y < pos_y + pleyer_height < walls[2].wall_y + wall_h3):
-        all_x_rite(walls, flur_x, coins,walls_level_1)
+        all_x_rite(walls, flur_x, coins,walls_level_1,Screen_mode,levels_2)
     elif (walls[2].wall_x < pos_x < walls[2].wall_x + wall_w3) and (
             walls[2].wall_y < pos_y + pleyer_height < walls[2].wall_y + wall_h3):
-        all_x_rite(walls, flur_x, coins,walls_level_1)
+        all_x_rite(walls, flur_x, coins,walls_level_1,Screen_mode,levels_2)
     elif (walls[2].wall_x < pos_x + pleyer_width < walls[2].wall_x + wall_w3) and (
             walls[2].wall_y < pos_y < walls[2].wall_y + wall_h3):
-        all_x_rite(walls, flur_x, coins,walls_level_1)
+        all_x_rite(walls, flur_x, coins,walls_level_1,Screen_mode,levels_2)
 
     # wall4
     # wall2
     elif (walls[3].wall_x < pos_x < walls[3].wall_x + wall_w4) and (
             walls[3].wall_y < pos_y < walls[3].wall_y + wall_h4):
 
-        all_y_down(walls, flur_y, coins,walls_level_1)
+        all_y_down(walls, flur_y, coins,walls_level_1,Screen_mode,levels_2)
     elif (walls[3].wall_x < pos_x + pleyer_width < walls[3].wall_x + wall_w4) and (
             walls[3].wall_y < pos_y + pleyer_height < walls[3].wall_y + wall_h4):
-        all_y_down(walls, flur_y, coins,walls_level_1)
+        all_y_down(walls, flur_y, coins,walls_level_1,Screen_mode,levels_2)
     elif (walls[3].wall_x < pos_x < walls[3].wall_x + wall_w4) and (
             walls[3].wall_y < pos_y + pleyer_height < walls[3].wall_y + wall_h4):
-        all_y_down(walls, flur_y, coins,walls_level_1)
+        all_y_down(walls, flur_y, coins,walls_level_1,Screen_mode,levels_2)
     elif (walls[3].wall_x < pos_x + pleyer_width < walls[3].wall_x + wall_w4) and (
             walls[3].wall_y < pos_y < walls[3].wall_y + wall_h4):
-        all_y_down(walls, flur_y, coins,walls_level_1)
+        all_y_down(walls, flur_y, coins,walls_level_1,Screen_mode,levels_2)
 
     # coin_1
 
