@@ -120,6 +120,18 @@ class Obstacle:
     def draw(self, surface):
         surface.blit(self.image, (self.x, self.y))
 
+class animal:
+    def __init__(self,x_pos,y_pos,WIDTH,HEIGHT,strong,image,deraction,x_max,x_min,alive):
+        self.x_pos = x_pos
+        self.y_pos = y_pos
+        self.WIDTH = WIDTH
+        self.HEIGHT =HEIGHT
+        self.strong =strong
+        self.image =image
+        self.deraction =deraction
+        self.x_max =x_max
+        self.x_min = x_min
+        self.alive = alive
 
 
 

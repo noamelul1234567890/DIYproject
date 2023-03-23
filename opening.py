@@ -16,3 +16,10 @@ def restart_opening_windows():
     font = pygame.font.SysFont('Aharoni', start_text_size)
     text = font.render(start_text_m, True, color)
     screen.blit(text, [start_text_x_pos, start_text_y_pos])
+
+    square = pygame.Rect(shop_buttons_x_pos, shop_buttons_y_pos, shop_buttons_width, shop_buttons_height)
+    pygame.draw.rect(screen, COLOR, square)
+
+    font = pygame.font.SysFont('Aharoni', start_text_size)
+    text = font.render('shop', True, color)
+    screen.blit(text, [shop_buttons_x_pos+5, shop_buttons_y_pos+5])
