@@ -1,3 +1,4 @@
+import random
 
 from קבועים import *
 def animals_move(animals):
@@ -34,5 +35,6 @@ def hitnagsot(animals):
             return1 = False
 
     return return1
+
 
 

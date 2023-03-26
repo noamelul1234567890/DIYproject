@@ -1,13 +1,14 @@
-from typing import List
 
 from game import *
 from opening import *
 from move import *
 from g import *
+from screen_puse import *
 Screen_mode = 'opening'
 x = 0
 y = 0
-
+font = pygame.font.SysFont('Aharoni', 40)
+text1 = font.render(setting_text, True,WHITE)
 
 def main():
     global screen, Screen_mode, event, pos, player_image
@@ -40,13 +41,13 @@ def main():
     # coins
     print_coin_1 = True
     print_coin_2 = True
-    print_coin_hart_1 = True
+
     coin_1 = [250, 60, 50, 50, coin, print_coin_1]
     coin_2 = [-100, -100, 50, 50, coin, print_coin_2]
-    coin_hart_1 = [200,50,40,40,coin_hart,print_coin_hart_1]
+
     num_of_coin = 0
-    coins_1 = [num_of_coin, coin_1, coin_2,coin_hart_1]
-    coins_hart: list[list[int | str | bool]] = [coin_hart_1]
+    coins_1 = [num_of_coin, coin_1, coin_2]
+
     koz_1 = [0, 0, 20, 20, False]
     kosim = [koz_1]
 
@@ -71,7 +72,7 @@ def main():
     speed_cion_sail = False
     speed_a = 0
     shoott = False
-    shoot_Valuable = [210, 210, 10, 10]
+    shoot_Valuable = [220, 220, 10, 10]
     x = 210
     y = 210
     while not finish:
@@ -86,7 +87,7 @@ def main():
             for i in range(len(steps) - 5):
                 pleyer_image = steps[i]
                 if Screen_mode == 'level 1':
-                    bild_level_1(1000, 1000, walls, pleyer_image, coins_1, anemy, lives,deracsen,coins_hart)
+                    bild_level_1(1000, 1000, walls, pleyer_image, coins_1, anemy, lives,deracsen,text1)
                     limit(flur_x, flur_y, walls, coins_1, walls_level_1, Screen_mode, levels_2)
                 if Screen_mode == 'level 2':
                     bild_level_2(pleyer_image,levels_2,lives,coins_1,animals_2,deracsen)
@@ -94,10 +95,10 @@ def main():
                     y += 0.2
                     if y > 475:
                         y -= 1
-                all_y_up(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,coins_hart,shoot_Valuable)
+                all_y_up(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,shoot_Valuable)
                 color = pygame.Surface.get_at(screen, (pos_x + pleyer_width // 2, pos_y + pleyer_height - 7))
                 if color == (0, 0, 0, 255):
-                    all_y_down(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,coins_hart,shoot_Valuable)
+                    all_y_down(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,shoot_Valuable)
                     break
 
                 #d
@@ -110,20 +111,23 @@ def main():
             for i in range(len(steps)):
                 pleyer_image = steps[i]
                 if Screen_mode == 'level 1':
-                    bild_level_1(1000, 1000, walls, pleyer_image, coins_1, anemy, lives,deracsen,coins_hart)
+                    bild_level_1(1000, 1000, walls, pleyer_image, coins_1, anemy, lives,deracsen,text1)
                     limit(flur_x, flur_y, walls, coins_1, walls_level_1, Screen_mode, levels_2)
                 if Screen_mode == 'level 2':
                     bild_level_2(pleyer_image,levels_2,lives,coins_1,animals_2,deracsen)
+
                 if Screen_mode == 'bose':
                     y -= 0.2
                     if y < 0:
                         y += 1
-                all_y_down(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,coins_hart,shoot_Valuable)
+                all_y_down(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,shoot_Valuable)
                 color = pygame.Surface.get_at(screen, (pos_x + pleyer_width // 2, pos_y + 7))
                 if color == (0, 0, 0, 255):
-                    all_y_up(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,coins_hart,shoot_Valuable)
+                    all_y_up(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,shoot_Valuable)
                     break
-
+                color = pygame.Surface.get_at(screen, (pos_x + pleyer_width // 2, pos_y))
+                if color == (149,94,39,255):
+                    Screen_mode = 'win'
 
                 pygame.display.flip()
 
@@ -132,7 +136,7 @@ def main():
             for i in range(len(steps)):
                 pleyer_image = steps[i]
                 if Screen_mode == 'level 1':
-                    bild_level_1(1000, 1000, walls, pleyer_image, coins_1, anemy, lives,deracsen,coins_hart)
+                    bild_level_1(1000, 1000, walls, pleyer_image, coins_1, anemy, lives,deracsen,text1)
                     limit(flur_x, flur_y, walls, coins_1, walls_level_1, Screen_mode, levels_2)
                 if Screen_mode == 'level 2':
                     bild_level_2(pleyer_image,levels_2,lives,coins_1,animals_2,deracsen)
@@ -140,10 +144,10 @@ def main():
                     x += 0.2
                     if x > 475:
                         x -= 1
-                all_x_left(walls, flur_x, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,coins_hart,shoot_Valuable)
+                all_x_left(walls, flur_x, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,shoot_Valuable)
                 color = pygame.Surface.get_at(screen, (pos_x + pleyer_width - 7, pos_y + pleyer_height // 2))
                 if color == (0, 0, 0, 255):
-                    all_x_rite(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,coins_hart,shoot_Valuable)
+                    all_x_rite(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,shoot_Valuable)
                     break
                 pygame.display.flip()
 
@@ -152,7 +156,7 @@ def main():
             for i in range(len(steps)):
                 pleyer_image = steps[i]
                 if Screen_mode == 'level 1':
-                    bild_level_1(1000, 1000, walls, pleyer_image, coins_1, anemy, lives,deracsen,coins_hart)
+                    bild_level_1(1000, 1000, walls, pleyer_image, coins_1, anemy, lives,deracsen,text1)
                     limit(flur_x, flur_y, walls, coins_1, walls_level_1, Screen_mode, levels_2)
                 if Screen_mode == 'level 2':
                     bild_level_2(pleyer_image,levels_2,lives,coins_1,animals_2,deracsen)
@@ -160,10 +164,10 @@ def main():
                     x -= 0.2
                     if x < 0:
                         x += 1
-                all_x_rite(walls, flur_x, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,coins_hart,shoot_Valuable)
+                all_x_rite(walls, flur_x, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,shoot_Valuable)
                 color = pygame.Surface.get_at(screen, (pos_x + 7, pos_y + pleyer_height // 2))
                 if color == (0, 0, 0, 255):
-                    all_x_left(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,coins_hart,shoot_Valuable)
+                    all_x_left(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,shoot_Valuable)
                     break
 
                 pygame.display.flip()
@@ -208,10 +212,26 @@ def main():
                 flur_y = p[1]
                 walls = p[2]
                 num_of_coin = p[3]
-
-
+            if Screen_mode== 'level 1':
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    pos = pygame.mouse.get_pos()
+                    if ((setting_x <= pos[0] <= setting_x + 150) and
+                            (setting_y <= pos[1] <= setting_y + setting_hight)):
+                        chack_if_exit_or_resume = display_pause_screen()
+                        if chack_if_exit_or_resume == True:
+                            Screen_mode = 'levels'
+                        elif chack_if_exit_or_resume == "level 1":
+                            Screen_mode = 'level 1'
 
             if event.type == pygame.MOUSEBUTTONDOWN:
+                pos = pygame.mouse.get_pos()
+                if ((setting_x <= pos[0] <= setting_x + settin_width) and
+                        (setting_y <= pos[1] <= setting_y + setting_hight)):
+                    chack_if_exit_or_resume = display_pause_screen()
+                    if chack_if_exit_or_resume == True:
+                        Screen_mode = 'levels'
+                    elif chack_if_exit_or_resume == "level 1":
+                        Screen_mode = 'level 1'
                 if Screen_mode == 'shop':
                     if ((100 <= pos[0] <= 160) and (
                             100 <= pos[1] <= 160)):
@@ -281,6 +301,7 @@ def main():
                     flur_x = -250
                     Screen_mode = 'level 1'
 
+
                 if Screen_mode == 'levels':
                     if (30 + 90 <= pos[0] <= 90 + 90) and (30 <= pos[1] <= 90):
                         Screen_mode = 'level 2'
@@ -291,18 +312,39 @@ def main():
                     if (30 <= pos[0] <= 130) and (400 <= pos[1] <= 460):
                         Screen_mode = 'opening'
 
+        if Screen_mode == 'win':
+            win_game()
+            if (140< pos[0] <140+200) and (
+                    210 < pos[2] < 60):
+                pass
+
 
         elif Screen_mode == 'level 1':
-            bild_level_1(flur_x, flur_y, walls, pleyer_image, coins_1, anemy, lives,deracsen,coins_hart)
+            bild_level_1(flur_x, flur_y, walls, pleyer_image, coins_1, anemy, lives,deracsen,text1)
 
         elif Screen_mode == 'level 2':
             levels_screen(levels_screen_x, levels_screen_y, levels_screen_w, levels_screen_h)
             bild_level_2(pleyer_image,levels_2,lives,coins_1,animals_2,deracsen)
+            wall1 = wall(-200, -360, wall_w1, wall_h1)
+            wall2 = wall(-210, -350, wall_w2, wall_h2)
+            wall3 = wall(400, -360, wall_w3, wall_h3)
+            wall4 = wall(-210, 241, wall_w4, wall_h4)
+            walls = [wall1, wall2, wall3, wall4]
+            lives = 180
+            coin_1 = [250, 60, 30, 30, coin, print_coin_1]
+            coin_2 = [-100, -100, 30, 30, coin, print_coin_2]
+            coins_1 = [num_of_coin, coin_1, coin_2]
+            animal1 = animal(250, 0, 50, 50, 10, hatalef_left, True, 0, 200, True)
+            animal2 = animal(-250, -200, 50, 50, 10, hatalef_left, True, 90, 0, True)
+            animal3 = animal(0, 0, 50, 50, 10, hatalef_left, True, 10, 0, True)
+            anemy = [animal1, animal2, animal3]
 
         elif Screen_mode == 'shop':
             shop(coins_1,speed_cion_sail)
             if (30 <= pos[0] <= 130) and (400 <= pos[1] <= 460):
                 Screen_mode = 'opening'
+
+
 
 
 

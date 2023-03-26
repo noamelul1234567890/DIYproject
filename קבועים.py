@@ -33,6 +33,10 @@ WINDOW_WIDTH = 500
 plur_w = 600
 plur_h = 600
 
+
+setting_text = "SETTING"
+
+
 start_background_width = 600
 start_background_height = 600
 start_background_x_pos = 0
@@ -43,6 +47,10 @@ shop_buttons_x_pos = 150
 shop_buttons_y_pos = 250
 shop_buttons_width = 200
 shop_buttons_height = 70
+setting_x = 335
+setting_y = 5
+settin_width = 80
+setting_hight = 40
 
 start_buttons_x_pos = 150
 start_buttons_y_pos = 150
