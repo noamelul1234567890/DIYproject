@@ -17,7 +17,6 @@ def all_x_rite(walls, flur_x, coins, walls_level_1, Screen_mode, levels_2, anemy
     elif Screen_mode == 'level 2':
         levels_2[0] += 3
 
-
         for i in range(len(anemy)):
             anemy[i].x_pos += speed+speed_a
             anemy[i].x_max += speed+speed_a
@@ -39,9 +38,9 @@ def all_x_left(walls, flur_x, coins,walls_level_1,Screen_mode,levels_2,animals,s
         walls_level_1[0].x_start -= speed+speed_a
         walls_level_1[0].x_end -= speed+speed_a
         for i in range(len(animals)):
-            animals[i].x_pos -= speed+speed_a
-            animals[i].x_max -= speed+speed_a
-            animals[i].x_min -= speed+speed_a
+            animals[i].x_pos -= speed + speed_a
+            animals[i].x_max -= speed + speed_a
+            animals[i].x_min -= speed + speed_a
     if Screen_mode == 'level 2':
         levels_2[0] -= speed+speed_a
 

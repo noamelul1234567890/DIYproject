@@ -216,7 +216,7 @@ def zzel():
         surface1.fill([0, 0, 0, 0])
         pygame.draw.circle(surface1, (0, 0, 0, alpa), (235, 240), i, 20)
         screen.blit(surface1, (0, 0))
-        alpa += 14
+        alpa += 13
         if alpa > 250:
             break
 
