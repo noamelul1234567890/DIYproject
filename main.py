@@ -312,10 +312,13 @@ def main():
                     if (30 <= pos[0] <= 130) and (400 <= pos[1] <= 460):
                         Screen_mode = 'opening'
 
+                if (370 <= pos[0] <= 470) and (30 <= pos[1] <= 130):
+                    Screen_mode = 'bose'
+
         if Screen_mode == 'win':
             win_game()
-            if (140< pos[0] <140+200) and (
-                    210 < pos[2] < 60):
+            if (140< pos[0] <140+200) and (210 < pos[2] < 60):
+                print(1)
                 pass
 
 

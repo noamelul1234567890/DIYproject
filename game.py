@@ -62,6 +62,12 @@ def levels_screen(levels_screen_x, levels_screen_y, levels_screen_w, levels_scre
     img = pygame.transform.scale(img, (100, 60))
     screen.blit(img, (30, 400))
 
+    square = pygame.Rect(370, 30, 100,100)
+    pygame.draw.rect(screen, (200, 00, 10), square)
+
+    font = pygame.font.SysFont(None, 55)
+    text = font.render('bose', True, (40,0,0))
+    screen.blit(text, [375, 60])
 
 def bild_level_2(pleyer_image, level_2, lives, coins, animals, deracsen):
     screen.fill((0, 0, 0))
