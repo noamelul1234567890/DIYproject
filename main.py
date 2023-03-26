@@ -63,7 +63,7 @@ def main():
 
     animal1 = animal(250, 0, 50, 50, 10, hatalef_left, True, 350, 200,True)
     animal2 = animal(-250, -200, 50, 50, 10, hatalef_left, True, 90, 0,True)
-    animal3 = animal(0, 0, 50, 50, 20, hatalef_left, True, 10, 0,True)
+    animal3 = animal(100, 100, 50, 50, 20, hatalef_left, True, 10, 0,True)
     anemy = [animal1, animal2, animal3]
 
     animals_2 = [animal1]
