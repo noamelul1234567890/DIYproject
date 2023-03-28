@@ -40,6 +40,8 @@ def main():
     levels_2 = [levels_2_x, levels_2_y]
 
     # walls of level 1
+import time
+
 from animals import *
 from bose_atak import bose_atak
 from classs import *

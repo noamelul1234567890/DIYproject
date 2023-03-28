@@ -101,7 +101,7 @@ def main():
 
     while not finish:
         # Load the music file
-
+        screen.fill((0,0,0))
 
         if Screen_mode == 'level 1':
             limit(flur_x, flur_y, walls, coins_1, walls_level_1, Screen_mode, levels_2)
@@ -200,7 +200,7 @@ def main():
                            levels_2, anemy, speed_a, shoot_Valuable)
                 color = pygame.Surface.get_at(screen, (
                     pos_x + pleyer_width - 7, pos_y + pleyer_height // 2))
-                if color == (0, 0, 0, 255):
+                if color == (0, 0, 0):
                     all_x_rite(walls, flur_y, coins_1, walls_level_1,
                                Screen_mode,
                                levels_2, anemy, speed_a,
@@ -305,11 +305,18 @@ def main():
 
                         # Play the music
                         pygame.mixer.music.play()
+                    if (140 < pos[0] < 340) and (280 < pos[1] < 340):
+                        Screen_mode = 'levels'
+                        pygame.mixer.music.load(bg_sound)
+                        # Set the volume
+
+                        # Play the music
+                        pygame.mixer.music.play()
 
 
                 if ((setting_x <= pos[0] <= setting_x + settin_width) and
                         (setting_y <= pos[1] <= setting_y + setting_hight)):
-                    chack_if_exit_or_resume = display_pause_screen()
+                    chack_if_exit_or_resume = display_pause_screen(Screen_mode)
                     if chack_if_exit_or_resume == True:
                         Screen_mode = 'levels'
                     elif chack_if_exit_or_resume == "level 1":
@@ -575,6 +582,7 @@ def main():
 
                 if (370 <= pos[0] <= 470) and (30 <= pos[1] <= 130):
                     Screen_mode = 'bose'
+                    time = 0
                     pygame.mixer.music.load(boss_sound)
                     # Set the volume
 
