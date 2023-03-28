@@ -1,5 +1,3 @@
-
-
 from קבועים import *
 
 def all_x_rite(walls, flur_x, coins, walls_level_1, Screen_mode, levels_2, anemy,speed_a,shoot_Valuable):
@@ -81,4 +79,3 @@ def all_y_down(walls, flur_y, coins,walls_level_1,Screen_mode,levels_2,animals,s
         animals[2].y_pos += speed+speed_a
     if Screen_mode == 'level 2':
         levels_2[1] += speed+speed_a
-

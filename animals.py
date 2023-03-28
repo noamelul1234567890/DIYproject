@@ -1,5 +1,7 @@
 import random
-
+import pygame
+from pygame.locals import *
+from pygame import mixer
 from קבועים import *
 def animals_move(animals):
     for i in range(len(animals)):
@@ -28,6 +30,7 @@ def hitnagsot(animals):
             elif animals[i].deraction == True:
                 animals[i].deraction = False
                 animals[i].image = hatalef_left
+
 
 
             return True

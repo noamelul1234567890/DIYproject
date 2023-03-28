@@ -1,5 +1,5 @@
 import time
-
+from קבועים import *
 import pygame
 import threading
 
@@ -10,6 +10,7 @@ from opening import screen
 from קבועים import rto, xx
 atak_1 = [100, 300, True]
 atak_2 = [200,200,True]
+
 
 def bose_atak(atak,a,x,y,live ):
 
@@ -30,5 +31,7 @@ def bose_atak(atak,a,x,y,live ):
             live -= 100
             print(1)
             atak_1[2] = False
+
+
 
 

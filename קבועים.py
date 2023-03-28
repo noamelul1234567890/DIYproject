@@ -28,7 +28,16 @@ step9 = 'Images//pleyer_10.png'
 step10 = 'Images//pleyer_11.png'
 rto = 'Images//x.png'
 xx = 'Images//xx.png'
+flure = 'Images//f.jpg'
+bose = 'Images//bose.png'
+hegrof = 'Images//hegrof.png'
 
+#sounds
+bg_sound = 'bg_sound.mp3'
+start_sound = 'Clash Royale Game Music - Menu Theme - Game Theme HQ OST.mp3'
+hitnagshut_sound = 'BRUH.mp3'
+level_2_sound = 'level_2_music.mp3'
+boss_sound = 'boss_music.mp3'
 WINDOW_HEIGHT = 500
 WINDOW_WIDTH = 500
 
@@ -58,6 +67,8 @@ start_buttons_x_pos = 150
 start_buttons_y_pos = 150
 start_buttons_width = 200
 start_buttons_height = 70
+setting_x = 350
+setting_y = 0
 
 start_level1_buttons_x_pos = 30
 start_level1_buttons_y_pos = 30
@@ -70,6 +81,7 @@ color = (250,250,250)
 #texts
 start_text_size = 60
 start_text_m = 'start'
+setting_text = 'Setting'
 start_text_x_pos = 150
 start_text_y_pos = 150
 
@@ -102,6 +114,8 @@ obstacle_height = 50
 obstacle_x = 0
 obstacle_y = 0
 obstacle_speed = 100 # pixels per second
+WHITE = 255,255,255
+BLACK = 0,0,0
 
 speed = 4
 

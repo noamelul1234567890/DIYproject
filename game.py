@@ -1,3 +1,45 @@
+from game import *
+from opening import *
+from move import *
+from g import *
+from screen_puse import *
+from pygame.locals import *
+from pygame import mixer
+
+Screen_mode = 'opening'
+x = 0
+y = 0
+live = 0
+a = 0
+font = pygame.font.SysFont('Aharoni', 40)
+text1 = font.render(setting_text, True, WHITE)
+
+
+def main():
+    global screen, Screen_mode, event, pos, player_image, live, pos_x, pos_y, time
+
+    screen_size = (WINDOW_WIDTH, WINDOW_HEIGHT)
+    screen = pygame.display.set_mode(screen_size)
+    pygame.init()
+    finish = False
+
+    atak = 'first'
+
+    lives = 180
+
+    flur_y = -350
+    flur_x = -250
+
+    levels_screen_x = 0
+    levels_screen_y = 0
+    levels_screen_w = 600
+    levels_screen_h = 600
+
+    levels_2_x = -270
+    levels_2_y = -740
+    levels_2 = [levels_2_x, levels_2_y]
+
+    # walls of level 1
 from animals import *
 from bose_atak import bose_atak
 from classs import *
@@ -7,11 +49,15 @@ screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), pygame.RESIZABLE
 
 def level_bose(deracsen, pleyer_image, x, y, atak, a, live):
     # baceraund
-    square = pygame.Rect(0, 0, 500, 500)
-    pygame.draw.rect(screen, (200, 200, 250), square)
+    img = pygame.image.load(flure)
+    img = pygame.transform.scale(img,
+                                 (500, 500))
+    screen.blit(img, (0, 0))
     # the bose
-    square = pygame.Rect(200, 0, 100, 100)
-    pygame.draw.rect(screen, (0, 0, 250), square)
+    img = pygame.image.load(bose)
+    img = pygame.transform.scale(img,
+                                 (200, 100))
+    screen.blit(img, (150, 50))
 
     if deracsen == 'go_rite':
         image = pygame.image.load(pleyer_image)
@@ -32,9 +78,25 @@ def level_bose(deracsen, pleyer_image, x, y, atak, a, live):
     pleyer_image = pygame.transform.scale(pleyer_image, (30, 30))
     screen.blit(pleyer_image, (x, y))
 
-    bose_atak(atak, a, x, y, live)
 
-    print_score(live, [0],0)
+
+    square = pygame.Rect(0, 0, 1000, 50)
+    pygame.draw.rect(screen, (100, 100, 100), square)
+
+    square = pygame.Rect(130, 10, 200, 32)
+    pygame.draw.rect(screen, (0, 100, 100), square)
+
+    square = pygame.Rect(140, 13, 1 * live, 25)
+    pygame.draw.rect(screen, (250, 00, 00), square)
+
+    font = pygame.font.Font(None, 36)
+    text = font.render("coins:  {}".format(0), True, (0, 0, 0))
+    screen.blit(text, (10, 10))
+    timea = pygame.time.get_ticks()
+    font = pygame.font.Font(None, 36)
+    text = font.render("time:  {}".format(timea // 1000), True, (250, 0, 250))
+    screen.blit(text, (400, 10))
+    screen.blit(text1, (setting_x, setting_y))
 
 
 def levels_screen(levels_screen_x, levels_screen_y, levels_screen_w, levels_screen_h):
@@ -69,7 +131,7 @@ def levels_screen(levels_screen_x, levels_screen_y, levels_screen_w, levels_scre
     screen.blit(text, [375, 60])
 
 
-def bild_level_2(pleyer_image, level_2, lives, coins, animals, deracsen):
+def bild_level_2(pleyer_image, level_2, lives, coins, animals, deracsen, text1):
     screen.fill((0, 0, 0))
     img = pygame.image.load(level2_image)
     img = pygame.transform.scale(img, (1000, 1000))
@@ -105,9 +167,11 @@ def bild_level_2(pleyer_image, level_2, lives, coins, animals, deracsen):
     # screen.blit(img, (pos_x, pos_y))
     zzel()
     print_score(lives, coins,0)
+    screen.blit(text1, (setting_x, setting_y))
 
 
 def bild_level_1(x, y, walls, pleyer_image, coins, animals, lives, deracsen, text1,time):
+
     img = pygame.image.load(plur_image)
     img = pygame.transform.scale(img, (plur_w, plur_h))
     screen.blit(img, (walls[0].wall_x, walls[0].wall_y))
@@ -249,8 +313,11 @@ def win_game():
     pygame.draw.rect(screen, (250, 20, 0), square)
 
     font = pygame.font.SysFont(None, 100)
-    text = font.render('levels', True, (0, 10, 10))
+    text = font.render('level 2', True, (0, 10, 10))
     screen.blit(text, [140, 210])
+
+    text1 = font.render('levels', True, (0, 10, 10))
+    screen.blit(text1, [140, 270])
     # print you win
     font = pygame.font.SysFont(None, 100)
     text = font.render('you win!!!', True, (250, 250, 0))

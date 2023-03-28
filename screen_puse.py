@@ -44,6 +44,7 @@ def display_pause_screen():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 posx, posy = pygame.mouse.get_pos()
                 if ((120 < posx < 350) and (330 < posy < 380)):
+                    pygame.mixer.music.stop()
                     return True
 
                 if ((120 < posx < 350) and (270 < posy < 320)):
