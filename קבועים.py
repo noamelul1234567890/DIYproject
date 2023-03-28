@@ -26,6 +26,8 @@ step7 = 'Images//pleyer_8.png'
 step8 = 'Images//pleyer_9.png'
 step9 = 'Images//pleyer_10.png'
 step10 = 'Images//pleyer_11.png'
+rto = 'Images//x.png'
+xx = 'Images//xx.png'
 
 WINDOW_HEIGHT = 500
 WINDOW_WIDTH = 500

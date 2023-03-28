@@ -1,22 +1,27 @@
-
 from game import *
 from opening import *
 from move import *
 from g import *
 from screen_puse import *
+
 Screen_mode = 'opening'
 x = 0
 y = 0
+live = 0
+a = 0
 font = pygame.font.SysFont('Aharoni', 40)
-text1 = font.render(setting_text, True,WHITE)
+text1 = font.render(setting_text, True, WHITE)
+
 
 def main():
-    global screen, Screen_mode, event, pos, player_image
+    global screen, Screen_mode, event, pos, player_image, live, pos_x, pos_y
 
     screen_size = (WINDOW_WIDTH, WINDOW_HEIGHT)
     screen = pygame.display.set_mode(screen_size)
     pygame.init()
     finish = False
+
+    atak = 'first'
 
     lives = 180
 
@@ -61,13 +66,13 @@ def main():
     wall_001 = line_wall(200, 130, 200, 200)
     walls_level_1 = [wall_001]
 
-    animal1 = animal(250, 0, 50, 50, 10, hatalef_left, True, 350, 200,True)
-    animal2 = animal(-250, -200, 50, 50, 10, hatalef_left, True, 90, 0,True)
-    animal3 = animal(100, 100, 50, 50, 60, hatalef_left, True, 10, 0,True)
+    animal1 = animal(250, 0, 50, 50, 10, hatalef_left, True, 350, 200, True)
+    animal2 = animal(-250, -200, 50, 50, 10, hatalef_left, True, 90, 0, True)
+    animal3 = animal(100, 100, 50, 50, 60, hatalef_left, True, 10, 0, True)
     anemy = [animal1, animal2, animal3]
 
     animals_2 = [animal1]
-    steps = [step1,step2,step3,step4,step5,step6,step7,step8,step9,step10]
+    steps = [step1, step2, step3, step4, step5, step6, step7, step8, step9, step10]
 
     speed_cion_sail = False
     speed_a = 0
@@ -87,22 +92,22 @@ def main():
             for i in range(len(steps) - 5):
                 pleyer_image = steps[i]
                 if Screen_mode == 'level 1':
-                    bild_level_1(1000, 1000, walls, pleyer_image, coins_1, anemy, lives,deracsen,text1)
+                    bild_level_1(1000, 1000, walls, pleyer_image, coins_1, anemy, lives, deracsen, text1,time)
                     limit(flur_x, flur_y, walls, coins_1, walls_level_1, Screen_mode, levels_2)
                 if Screen_mode == 'level 2':
-                    bild_level_2(pleyer_image,levels_2,lives,coins_1,animals_2,deracsen)
+                    bild_level_2(pleyer_image, levels_2, lives, coins_1, animals_2, deracsen)
                 if Screen_mode == 'bose':
                     y += 0.2
                     if y > 475:
                         y -= 1
-                all_y_up(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,shoot_Valuable)
+                all_y_up(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy, speed_a, shoot_Valuable)
                 color = pygame.Surface.get_at(screen, (pos_x + pleyer_width // 2, pos_y + pleyer_height - 7))
                 if color == (0, 0, 0, 255):
-                    all_y_down(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,shoot_Valuable)
+                    all_y_down(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy, speed_a,
+                               shoot_Valuable)
                     break
 
-                #d
-
+                # d
 
                 pygame.display.flip()
 
@@ -111,22 +116,23 @@ def main():
             for i in range(len(steps)):
                 pleyer_image = steps[i]
                 if Screen_mode == 'level 1':
-                    bild_level_1(1000, 1000, walls, pleyer_image, coins_1, anemy, lives,deracsen,text1)
+                    bild_level_1(1000, 1000, walls, pleyer_image, coins_1, anemy, lives, deracsen, text1,time)
                     limit(flur_x, flur_y, walls, coins_1, walls_level_1, Screen_mode, levels_2)
                 if Screen_mode == 'level 2':
-                    bild_level_2(pleyer_image,levels_2,lives,coins_1,animals_2,deracsen)
+                    bild_level_2(pleyer_image, levels_2, lives, coins_1, animals_2, deracsen)
 
                 if Screen_mode == 'bose':
                     y -= 0.2
                     if y < 0:
                         y += 1
-                all_y_down(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,shoot_Valuable)
+                all_y_down(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy, speed_a, shoot_Valuable)
                 color = pygame.Surface.get_at(screen, (pos_x + pleyer_width // 2, pos_y + 7))
                 if color == (0, 0, 0, 255):
-                    all_y_up(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,shoot_Valuable)
+                    all_y_up(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy, speed_a,
+                             shoot_Valuable)
                     break
                 color = pygame.Surface.get_at(screen, (pos_x + pleyer_width // 2, pos_y))
-                if color == (149,94,39,255):
+                if color == (149, 94, 39, 255):
                     Screen_mode = 'win'
 
                 pygame.display.flip()
@@ -136,18 +142,19 @@ def main():
             for i in range(len(steps)):
                 pleyer_image = steps[i]
                 if Screen_mode == 'level 1':
-                    bild_level_1(1000, 1000, walls, pleyer_image, coins_1, anemy, lives,deracsen,text1)
+                    bild_level_1(1000, 1000, walls, pleyer_image, coins_1, anemy, lives, deracsen, text1,time)
                     limit(flur_x, flur_y, walls, coins_1, walls_level_1, Screen_mode, levels_2)
                 if Screen_mode == 'level 2':
-                    bild_level_2(pleyer_image,levels_2,lives,coins_1,animals_2,deracsen)
+                    bild_level_2(pleyer_image, levels_2, lives, coins_1, animals_2, deracsen)
                 if Screen_mode == 'bose':
                     x += 0.2
                     if x > 475:
                         x -= 1
-                all_x_left(walls, flur_x, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,shoot_Valuable)
+                all_x_left(walls, flur_x, coins_1, walls_level_1, Screen_mode, levels_2, anemy, speed_a, shoot_Valuable)
                 color = pygame.Surface.get_at(screen, (pos_x + pleyer_width - 7, pos_y + pleyer_height // 2))
                 if color == (0, 0, 0, 255):
-                    all_x_rite(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,shoot_Valuable)
+                    all_x_rite(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy, speed_a,
+                               shoot_Valuable)
                     break
                 pygame.display.flip()
 
@@ -156,22 +163,22 @@ def main():
             for i in range(len(steps)):
                 pleyer_image = steps[i]
                 if Screen_mode == 'level 1':
-                    bild_level_1(1000, 1000, walls, pleyer_image, coins_1, anemy, lives,deracsen,text1)
+                    bild_level_1(1000, 1000, walls, pleyer_image, coins_1, anemy, lives, deracsen, text1,time)
                     limit(flur_x, flur_y, walls, coins_1, walls_level_1, Screen_mode, levels_2)
                 if Screen_mode == 'level 2':
-                    bild_level_2(pleyer_image,levels_2,lives,coins_1,animals_2,deracsen)
+                    bild_level_2(pleyer_image, levels_2, lives, coins_1, animals_2, deracsen)
                 if Screen_mode == 'bose':
                     x -= 0.2
                     if x < 0:
                         x += 1
-                all_x_rite(walls, flur_x, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,shoot_Valuable)
+                all_x_rite(walls, flur_x, coins_1, walls_level_1, Screen_mode, levels_2, anemy, speed_a, shoot_Valuable)
                 color = pygame.Surface.get_at(screen, (pos_x + 7, pos_y + pleyer_height // 2))
                 if color == (0, 0, 0, 255):
-                    all_x_left(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy,speed_a,shoot_Valuable)
+                    all_x_left(walls, flur_y, coins_1, walls_level_1, Screen_mode, levels_2, anemy, speed_a,
+                               shoot_Valuable)
                     break
 
                 pygame.display.flip()
-
 
         if hitnagsot(anemy):
             lives -= 10
@@ -191,6 +198,8 @@ def main():
                 if event.key == pygame.K_x:
                     if Screen_mode == 'bose':
                         shoott = True
+                        pos_x = x
+                        pos_y = y
 
                     elif Screen_mode == 'level 1':
                         shoott = True
@@ -212,7 +221,7 @@ def main():
                 flur_y = p[1]
                 walls = p[2]
                 num_of_coin = p[3]
-            if Screen_mode== 'level 1':
+            if Screen_mode == 'level 1':
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     pos = pygame.mouse.get_pos()
                     if ((setting_x <= pos[0] <= setting_x + 150) and
@@ -225,6 +234,13 @@ def main():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
+
+                if Screen_mode == 'win':
+                    pos = pygame.mouse.get_pos()
+                    print(pos)
+                    if (140 < pos[0] < 340) and (210 < pos[1] < 270):
+                        Screen_mode = 'levels'
+
                 if ((setting_x <= pos[0] <= setting_x + settin_width) and
                         (setting_y <= pos[1] <= setting_y + setting_hight)):
                     chack_if_exit_or_resume = display_pause_screen()
@@ -237,7 +253,7 @@ def main():
                             100 <= pos[1] <= 160)):
                         if speed_cion_sail == False:
                             if num_of_coin >= 2:
-                                speed_cion_sail =True
+                                speed_cion_sail = True
                                 speed_a += 3
                                 num_of_coin -= 2
                 if Screen_mode == 'opening':
@@ -250,7 +266,7 @@ def main():
                         Screen_mode = 'shop'
 
         if Screen_mode == 'bose':
-            level_bose(deracsen,pleyer_image,x,y)
+            level_bose(deracsen, pleyer_image, x, y, atak, a, live)
             if shoott:
                 x = 210
                 y = 210
@@ -276,7 +292,6 @@ def main():
                         shoott = False
                         anemy[i].alive = False
 
-
         if Screen_mode == 'opening':
             restart_opening_windows()
 
@@ -293,20 +308,20 @@ def main():
                     coin_1 = [250, 60, 30, 30, coin, print_coin_1]
                     coin_2 = [-100, -100, 30, 30, coin, print_coin_2]
                     coins_1 = [num_of_coin, coin_1, coin_2]
-                    animal1 = animal(250, 0, 50, 50, 10, hatalef_left, True, 350, 200,True)
-                    animal2 = animal(-250, -200, 50, 50, 10, hatalef_left, True, 90, 0,True)
-                    animal3 = animal(0, 0, 50, 50, 10, hatalef_left, True, 10, 0,True)
+                    animal1 = animal(250, 0, 50, 50, 10, hatalef_left, True, 350, 200, True)
+                    animal2 = animal(-250, -200, 50, 50, 10, hatalef_left, True, 90, 0, True)
+                    animal3 = animal(0, 0, 50, 50, 10, hatalef_left, True, 10, 0, True)
                     anemy = [animal1, animal2, animal3]
                     flur_y = -350
                     flur_x = -250
-                    Screen_mode = 'level 1'
 
+                    Screen_mode = 'level 1'
 
                 if Screen_mode == 'levels':
                     if (30 + 90 <= pos[0] <= 90 + 90) and (30 <= pos[1] <= 90):
                         Screen_mode = 'level 2'
                         lives = 200
-                        animal1 = animal(250, 0, 50, 50, 10, hatalef_left, True, 350, 200,True)
+                        animal1 = animal(250, 0, 50, 50, 10, hatalef_left, True, 350, 200, True)
 
                 if Screen_mode == 'levels':
                     if (30 <= pos[0] <= 130) and (400 <= pos[1] <= 460):
@@ -314,20 +329,20 @@ def main():
 
                 if (370 <= pos[0] <= 470) and (30 <= pos[1] <= 130):
                     Screen_mode = 'bose'
+                    live = 180
 
         if Screen_mode == 'win':
             win_game()
-            if (140< pos[0] <140+200) and (210 < pos[2] < 60):
-                print(1)
-                pass
+
 
 
         elif Screen_mode == 'level 1':
-            bild_level_1(flur_x, flur_y, walls, pleyer_image, coins_1, anemy, lives,deracsen,text1)
+            time = pygame.time.get_ticks()
+            bild_level_1(flur_x, flur_y, walls, pleyer_image, coins_1, anemy, lives, deracsen, text1,time)
 
         elif Screen_mode == 'level 2':
             levels_screen(levels_screen_x, levels_screen_y, levels_screen_w, levels_screen_h)
-            bild_level_2(pleyer_image,levels_2,lives,coins_1,animals_2,deracsen)
+            bild_level_2(pleyer_image, levels_2, lives, coins_1, animals_2, deracsen)
             wall1 = wall(-200, -360, wall_w1, wall_h1)
             wall2 = wall(-210, -350, wall_w2, wall_h2)
             wall3 = wall(400, -360, wall_w3, wall_h3)
@@ -343,18 +358,15 @@ def main():
             anemy = [animal1, animal2, animal3]
 
         elif Screen_mode == 'shop':
-            shop(coins_1,speed_cion_sail)
+            shop(coins_1, speed_cion_sail)
             if (30 <= pos[0] <= 130) and (400 <= pos[1] <= 460):
                 Screen_mode = 'opening'
 
-
-
-
-
         if shoott:
-            x =210
-            y = 210
-            square = pygame.Rect(shoot_Valuable[0] +20, shoot_Valuable[1] + shoot_Valuable[3] , shoot_Valuable[2], shoot_Valuable[3])
+            x = 220
+            y = 220
+            square = pygame.Rect(shoot_Valuable[0] + 20, shoot_Valuable[1] + shoot_Valuable[3], shoot_Valuable[2],
+                                 shoot_Valuable[3])
             pygame.draw.rect(screen, (210, 30, 30), square)
             color = pygame.Surface.get_at(screen, (x, y))
             if color == (0, 0, 0, 255):
@@ -362,6 +374,8 @@ def main():
                 shoot_Valuable[1] = y
             if deracsen == 'go_down':
                 shoot_Valuable[1] += 10
+                if shoot_Valuable[1] > 500:
+                        shoott = False
             if deracsen == 'go_up':
                 shoot_Valuable[1] -= 10
             if deracsen == 'go_rite':
@@ -370,11 +384,10 @@ def main():
                 shoot_Valuable[0] -= 10
 
             for i in range(len(anemy)):
-                if (anemy[i].x_pos < shoot_Valuable[0] < anemy[i].x_pos + anemy[i].WIDTH) and (anemy[i].y_pos < shoot_Valuable[1] < anemy[i].y_pos + anemy[i].HEIGHT):
+                if (anemy[i].x_pos < shoot_Valuable[0] < anemy[i].x_pos + anemy[i].WIDTH) and (
+                        anemy[i].y_pos < shoot_Valuable[1] < anemy[i].y_pos + anemy[i].HEIGHT):
                     shoott = False
                     anemy[i].alive = False
-
-
 
         pygame.display.flip()
     pygame.quit()

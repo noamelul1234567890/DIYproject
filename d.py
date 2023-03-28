@@ -1,3 +1,5 @@
+import threading
+
 import pygame
 import sys
 
@@ -15,3 +17,4 @@ while True:
 
     screen.blit(img, (0, 100))
     pygame.display.update()
+

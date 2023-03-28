@@ -4,12 +4,13 @@ from classs import *
 
 screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), pygame.RESIZABLE)
 
-def level_bose(deracsen,pleyer_image,x,y):
-    #baceraund
+
+def level_bose(deracsen, pleyer_image, x, y, atak, a, live):
+    # baceraund
     square = pygame.Rect(0, 0, 500, 500)
     pygame.draw.rect(screen, (200, 200, 250), square)
     # the bose
-    square = pygame.Rect(200, 0,100, 100)
+    square = pygame.Rect(200, 0, 100, 100)
     pygame.draw.rect(screen, (0, 0, 250), square)
 
     if deracsen == 'go_rite':
@@ -31,11 +32,9 @@ def level_bose(deracsen,pleyer_image,x,y):
     pleyer_image = pygame.transform.scale(pleyer_image, (30, 30))
     screen.blit(pleyer_image, (x, y))
 
-    bose_atak()
+    bose_atak(atak, a, x, y, live)
 
-
-
-
+    print_score(live, [0],0)
 
 
 def levels_screen(levels_screen_x, levels_screen_y, levels_screen_w, levels_screen_h):
@@ -62,12 +61,13 @@ def levels_screen(levels_screen_x, levels_screen_y, levels_screen_w, levels_scre
     img = pygame.transform.scale(img, (100, 60))
     screen.blit(img, (30, 400))
 
-    square = pygame.Rect(370, 30, 100,100)
+    square = pygame.Rect(370, 30, 100, 100)
     pygame.draw.rect(screen, (200, 00, 10), square)
 
     font = pygame.font.SysFont(None, 55)
-    text = font.render('bose', True, (40,0,0))
+    text = font.render('bose', True, (40, 0, 0))
     screen.blit(text, [375, 60])
+
 
 def bild_level_2(pleyer_image, level_2, lives, coins, animals, deracsen):
     screen.fill((0, 0, 0))
@@ -104,10 +104,10 @@ def bild_level_2(pleyer_image, level_2, lives, coins, animals, deracsen):
     # img = pygame.transform.scale(img, (pleyer_width, pleyer_height))
     # screen.blit(img, (pos_x, pos_y))
     zzel()
-    print_score(lives, coins)
+    print_score(lives, coins,0)
 
 
-def bild_level_1(x, y, walls, pleyer_image, coins, animals, lives, deracsen,text1):
+def bild_level_1(x, y, walls, pleyer_image, coins, animals, lives, deracsen, text1,time):
     img = pygame.image.load(plur_image)
     img = pygame.transform.scale(img, (plur_w, plur_h))
     screen.blit(img, (walls[0].wall_x, walls[0].wall_y))
@@ -122,9 +122,8 @@ def bild_level_1(x, y, walls, pleyer_image, coins, animals, lives, deracsen,text
             img = pygame.transform.scale(img, (coins[i][2], coins[i][3]))
             screen.blit(img, (coins[i][0], coins[i][1]))
 
-
     zzel()
-    print_score(lives, coins)
+    print_score(lives, coins,time)
 
     rect = pygame.Surface((500, 500))
     rect.set_alpha(50)
@@ -194,7 +193,7 @@ def limit(flur_x, flur_y, walls, coins, walls_level_1, Screen_mode, levels_2):
     return p
 
 
-def print_score(lives, coins):
+def print_score(lives, coins,time):
     square = pygame.Rect(0, 0, 1000, 50)
     pygame.draw.rect(screen, (100, 100, 100), square)
 
@@ -207,6 +206,10 @@ def print_score(lives, coins):
     font = pygame.font.Font(None, 36)
     text = font.render("coins:  {}".format(coins[0]), True, (0, 0, 0))
     screen.blit(text, (10, 10))
+
+    font = pygame.font.Font(None, 36)
+    text = font.render("time:  {}".format(time//1000), True, (250, 0, 250))
+    screen.blit(text, (400, 60))
 
 
 def zzel():
@@ -221,8 +224,7 @@ def zzel():
             break
 
 
-def shoot(animals,shoot_Valuable,deracsen):
-
+def shoot(animals, shoot_Valuable, deracsen):
     if deracsen == 'go_down':
         shoot_Valuable[3] += 10
     if deracsen == 'go_up':
@@ -237,6 +239,7 @@ def shoot(animals,shoot_Valuable,deracsen):
                          shoot_Valuable[2], shoot_Valuable[3])
     pygame.draw.rect(screen, (210, 30, 30), square)
 
+
 def win_game():
     # bakeruond
     square = pygame.Rect(0, 0, 1000, 1000)
@@ -250,9 +253,5 @@ def win_game():
     screen.blit(text, [140, 210])
     # print you win
     font = pygame.font.SysFont(None, 100)
-    text = font.render('you win!!!', True, (250,250,0))
+    text = font.render('you win!!!', True, (250, 250, 0))
     screen.blit(text, [start_level1_buttons_x_pos + 50, start_level1_buttons_y_pos + 10])
-
-
-
-
