@@ -14,7 +14,7 @@ text1 = font.render(setting_text, True, WHITE)
 
 
 def main():
-    global screen, Screen_mode, event, pos, player_image, live, pos_x, pos_y
+    global screen, Screen_mode, event, pos, player_image, live, pos_x, pos_y, time
 
     screen_size = (WINDOW_WIDTH, WINDOW_HEIGHT)
     screen = pygame.display.set_mode(screen_size)
