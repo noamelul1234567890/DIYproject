@@ -96,8 +96,8 @@ def level_bose(deracsen, pleyer_image, x, y, atak, a, live,timer_start_bose):
     screen.blit(text, (10, 10))
     timea = pygame.time.get_ticks()
     font = pygame.font.Font(None, 36)
-    text = font.render("time:  {}".format((timea - timer_start_bose) // 1000), True, (250, 0, 250))
-    screen.blit(text, (400, 10))
+    text = font.render("time:  {}".format((timea - timer_start_bose) // 1000), True, (0, 0, 0))
+    screen.blit(text, (400, 60))
     screen.blit(text1, (setting_x, setting_y))
 
 
@@ -315,11 +315,8 @@ def win_game():
     pygame.draw.rect(screen, (250, 20, 0), square)
 
     font = pygame.font.SysFont(None, 100)
-    text = font.render('level 2', True, (0, 10, 10))
-    screen.blit(text, [140, 210])
-
     text1 = font.render('levels', True, (0, 10, 10))
-    screen.blit(text1, [140, 270])
+    screen.blit(text1, [140, 210])
     # print you win
     font = pygame.font.SysFont(None, 100)
     text = font.render('you win!!!', True, (250, 250, 0))

@@ -1,11 +1,8 @@
 from game import *
 from opening import *
 from move import *
-from g import *
 from screen_puse import *
-from pygame.locals import *
-from pygame import mixer
-import time
+
 
 
 Screen_mode = 'opening'
@@ -17,22 +14,22 @@ font = pygame.font.SysFont('Aharoni', 40)
 text1 = font.render(setting_text, True, WHITE)
 
 
-def main(timemer=None):
+def main():
 
-    global screen, Screen_mode, event, pos, player_image, live, pos_x, pos_y, time
+    global screen, Screen_mode, event, pos, player_image, live, pos_x, pos_y, time, text1
     pygame.mixer.init()
     music1 = pygame.mixer.Sound(bg_sound)
     music2 = pygame.mixer.Sound(hitnagshut_sound)
 
     # Play both music files simultaneously
 
-    channel2 = music2.play()
+
     screen_size = (WINDOW_WIDTH, WINDOW_HEIGHT)
     screen = pygame.display.set_mode(screen_size)
     pygame.init()
     finish = False
-    x1 = 0
-    atak = 'first'
+
+
     timer_start_bose = 0
     lives = 180
 
@@ -63,9 +60,6 @@ def main(timemer=None):
 
     num_of_coin = 0
     coins_1 = [num_of_coin, coin_1, coin_2]
-
-    koz_1 = [0, 0, 20, 20, False]
-    kosim = [koz_1]
 
     pleyer_image = step1
     go_up = False
@@ -99,30 +93,14 @@ def main(timemer=None):
     hand_2 = 0
     hand_3 = 0
 
-
     while not finish:
         timemer = pygame.time.get_ticks()
-
-
-
-
-
-
-
-
-
-
-
 
         # Load the music file
         screen.fill((0,0,0))
 
         if Screen_mode == 'level 1':
             limit(flur_x, flur_y, walls, coins_1, walls_level_1, Screen_mode, levels_2)
-
-        # diraction('opening', go_down, go_rite, go_left, go_up, steps, walls,
-        #           flur_y, coins_1, walls_level_1,
-        #           levels_2, anemy, speed_a, shoot_Valuable, flur_x)
         if go_down:
             deracsen = 'go_down'
             for i in range(len(steps) - 5):
@@ -291,8 +269,6 @@ def main(timemer=None):
                     go_rite = True
                 if event.key == pygame.K_LEFT:
                     go_left = True
-
-                wall_num = 1
                 p = limit(flur_x, flur_y, walls, coins_1, walls_level_1, Screen_mode, levels_2)
                 flur_x = p[0]
                 flur_y = p[1]
@@ -316,7 +292,7 @@ def main(timemer=None):
                     pos = pygame.mouse.get_pos()
                     print(pos)
                     if (140 < pos[0] < 340) and (210 < pos[1] < 270):
-                        Screen_mode = 'level 2'
+                        Screen_mode = 'levels'
                         pygame.mixer.music.load(level_2_sound)
                         # Set the volume
 
@@ -366,16 +342,16 @@ def main(timemer=None):
 
             level_bose(deracsen, pleyer_image, x, y, atak, a, live,timer_start_bose)
             atak_1 = [100, 300, True]
-            atak_2 = [200, 200, True]
+
             if timer_start_bose + 1000 < timemer < timer_start_bose + 2000:
                 font = pygame.font.SysFont(None, 40)
                 text1 = font.render('you ur uglei', True, (0, 10, 10))
                 screen.blit(text1, [30, 60])
 
-            if timer_start_bose + 1800 < timemer < timer_start_bose + 2400:
-                font = pygame.font.SysFont(None, 40)
+            if timer_start_bose + 1800 < timemer < timer_start_bose + 3000:
+                font = pygame.font.SysFont(None, 60)
                 text1 = font.render('no', True, (0, 10, 10))
-                screen.blit(text1, [150, 150])
+                screen.blit(text1, [150, 200])
 
             if timer_start_bose + 5000 < timemer < timer_start_bose + 7000:
                 image = pygame.image.load(hegrof)
@@ -389,7 +365,6 @@ def main(timemer=None):
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
                 screen.blit(p, (atak_1[0], atak_1[1]))
-
             elif timer_start_bose + 7000 < timemer < timer_start_bose + 8000:
                 image = pygame.image.load(xx)
                 p = pygame.transform.rotate(image, 180)
@@ -400,14 +375,35 @@ def main(timemer=None):
                     live -= 1
                     atak_1[2] = False
 
-            elif timer_start_bose + 10000 < timemer < timer_start_bose + 14000:
+            if timer_start_bose + 7000 < timemer < timer_start_bose + 10000:
+                image = pygame.image.load(hegrof)
+                p = pygame.transform.rotate(image, 180)
+                p = pygame.transform.scale(p, (100, 100))
+                screen.blit(p, (300, yui_1))
+                if yui_1 < 130:
+                    yui_1 += 1
+                image = pygame.image.load(rto)
+                p = pygame.transform.rotate(image, 180)
+                p = pygame.transform.scale(p, (100, 100))
+                screen.blit(p, (150, 140))
+            elif timer_start_bose + 10000 < timemer < timer_start_bose + 11000:
+                image = pygame.image.load(xx)
+                p = pygame.transform.rotate(image, 180)
+                p = pygame.transform.scale(p, (100, 100))
+                screen.blit(p, (150, 140))
+                if 150 < x + 5 < 150 + 100 and 140 < y + 5 < 140 + 100 and atak_1[2]:
+                    live -= 1
+                    atak_1[2] = False
+
+
+
+            if timer_start_bose + 10000 < timemer < timer_start_bose + 14000:
                 image = pygame.image.load(hegrof)
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
                 screen.blit(p, (300, yui_2))
                 if yui_2 < 130:
                     yui_2 += 1
-
                 image = pygame.image.load(rto)
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
@@ -424,7 +420,7 @@ def main(timemer=None):
                     atak_1[2] = False
 
 
-            elif timer_start_bose + timemer > 15000 and timer_start_bose + timemer < 18000:
+            if timer_start_bose + timemer > 15000 and timer_start_bose + timemer < 18000:
                 image = pygame.image.load(hegrof)
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
@@ -436,7 +432,6 @@ def main(timemer=None):
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
                 screen.blit(p, (atak_1[0] + 100, atak_1[1] - 50))
-
             elif timer_start_bose + 18000 < timemer < timer_start_bose + 19000:
                 image = pygame.image.load(xx)
                 p = pygame.transform.rotate(image, 180)
@@ -517,10 +512,20 @@ def main(timemer=None):
                     if time_10 + 1000 > times[i] and time_10 < times[i] + 2000:
                         square = pygame.Rect(rains[i][0], rains[i][1], 20, 20)
                         pygame.draw.rect(screen, (0, 10, 10), square)
-                        # if rains[i][0] < pos_x + 5 < rains[i][0] + 20 and rains[i][1] < pos_y + 5 < rains[i][1] + 20:
-                        #     live -= 1
+
             if timemer > timer_start_bose + 30000:
                 Screen_mode = 'win'
+
+            if timer_start_bose + 24000 < timemer < timer_start_bose + 26000:
+                font = pygame.font.SysFont(None, 40)
+                text1 = font.render('how you do it?', True, (0, 10, 10))
+                screen.blit(text1, [30, 60])
+
+            if timer_start_bose + 25000 < timemer < timer_start_bose + 30000:
+                font = pygame.font.SysFont(None, 60)
+                text1 = font.render('i play fortinait', True, (0, 10, 10))
+                screen.blit(text1, [150, 200])
+
             if shoott:
                 x = 210
                 y = 210
@@ -609,12 +614,8 @@ def main(timemer=None):
                     Screen_mode = 'bose'
                     timer_start_bose = timemer
 
-
-
-
-
-                    pygame.mixer.music.load(boss_sound)
                     # Set the volume
+                    pygame.mixer.music.load(boss_sound)
 
                     # Play the music
                     pygame.mixer.music.play()
