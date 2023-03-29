@@ -108,7 +108,7 @@ def main():
                 if Screen_mode == 'level 1':
                     bild_level_1(1000, 1000, walls, pleyer_image, coins_1,
                                  anemy,
-                                 lives, deracsen, text1, time)
+                                 lives, deracsen, text1, )
                     limit(flur_x, flur_y, walls, coins_1, walls_level_1,
                           Screen_mode, levels_2)
                 if Screen_mode == 'level 2':
@@ -141,7 +141,7 @@ def main():
                 if Screen_mode == 'level 1':
                     bild_level_1(1000, 1000, walls, pleyer_image, coins_1,
                                  anemy,
-                                 lives, deracsen, text1, time)
+                                 lives, deracsen, text1, )
                     limit(flur_x, flur_y, walls, coins_1, walls_level_1,
                           Screen_mode, levels_2)
                 if Screen_mode == 'level 2':
@@ -177,7 +177,7 @@ def main():
                 if Screen_mode == 'level 1':
                     bild_level_1(1000, 1000, walls, pleyer_image, coins_1,
                                  anemy,
-                                 lives, deracsen, text1, time)
+                                 lives, deracsen, text1, )
                     limit(flur_x, flur_y, walls, coins_1, walls_level_1,
                           Screen_mode, levels_2)
                 if Screen_mode == 'level 2':
@@ -207,7 +207,7 @@ def main():
                 if Screen_mode == 'level 1':
                     bild_level_1(1000, 1000, walls, pleyer_image, coins_1,
                                  anemy,
-                                 lives, deracsen, text1, time)
+                                 lives, deracsen, text1, )
                     limit(flur_x, flur_y, walls, coins_1, walls_level_1,
                           Screen_mode, levels_2)
                 if Screen_mode == 'level 2':
@@ -628,7 +628,7 @@ def main():
 
         elif Screen_mode == 'level 1':
             time = pygame.time.get_ticks()
-            bild_level_1(flur_x, flur_y, walls, pleyer_image, coins_1, anemy, lives, deracsen, text1,time)
+            bild_level_1(flur_x, flur_y, walls, pleyer_image, coins_1, anemy, lives, deracsen, text1,)
 
         elif Screen_mode == 'level 2':
 

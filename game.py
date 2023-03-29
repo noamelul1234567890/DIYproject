@@ -168,11 +168,11 @@ def bild_level_2(pleyer_image, level_2, lives, coins, animals, deracsen, text1):
     # img = pygame.transform.scale(img, (pleyer_width, pleyer_height))
     # screen.blit(img, (pos_x, pos_y))
     zzel()
-    print_score(lives, coins,0)
+    print_score(lives, coins,)
     screen.blit(text1, (setting_x, setting_y))
 
 
-def bild_level_1(x, y, walls, pleyer_image, coins, animals, lives, deracsen, text1,time):
+def bild_level_1(x, y, walls, pleyer_image, coins, animals, lives, deracsen, text1,):
 
     img = pygame.image.load(plur_image)
     img = pygame.transform.scale(img, (plur_w, plur_h))
@@ -189,7 +189,7 @@ def bild_level_1(x, y, walls, pleyer_image, coins, animals, lives, deracsen, tex
             screen.blit(img, (coins[i][0], coins[i][1]))
 
     zzel()
-    print_score(lives, coins,time)
+    print_score(lives, coins,)
 
     rect = pygame.Surface((500, 500))
     rect.set_alpha(50)
@@ -259,7 +259,7 @@ def limit(flur_x, flur_y, walls, coins, walls_level_1, Screen_mode, levels_2):
     return p
 
 
-def print_score(lives, coins,time):
+def print_score(lives, coins,):
     square = pygame.Rect(0, 0, 1000, 50)
     pygame.draw.rect(screen, (100, 100, 100), square)
 
@@ -273,9 +273,9 @@ def print_score(lives, coins,time):
     text = font.render("coins:  {}".format(coins[0]), True, (0, 0, 0))
     screen.blit(text, (10, 10))
 
-    font = pygame.font.Font(None, 36)
-    text = font.render("time:  {}".format(time//1000), True, (250, 0, 250))
-    screen.blit(text, (400, 60))
+    # font = pygame.font.Font(None, 36)
+    # text = font.render("time:  {}".format(time//1000), True, (250, 0, 250))
+    # screen.blit(text, (400, 60))
 
 
 def zzel():
