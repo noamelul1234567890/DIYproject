@@ -50,23 +50,23 @@
 #     t0 = t1
 #   else:
 #     print ("Time elapsed is", dt, "seconds")
-import pygame
-
-pygame.init()
-
-reference_timer = 0
-game_ended = True
-while True:
-
-    if game_ended:
-        reference_timeR = pygame.time.get_ticks()
-        # reset game session
-        current_time = pygame.time.get_ticks() - reference_timer
-      # 60 frames per second)
-
-    print(current_time // 1000)
-
-    if (current_time) > 5:
-        game_ended = False
-        clock = pygame.time.get_ticks()
-        print(clock//1000)
+# import pygame
+#
+# pygame.init()
+#
+# reference_timer = 0
+# game_ended = True
+# while True:
+#
+#     if game_ended:
+#         reference_timeR = pygame.time.get_ticks()
+#         # reset game session
+#         current_time = pygame.time.get_ticks() - reference_timer
+#       # 60 frames per second)
+#
+#     print(current_time // 1000)
+#
+#     if (current_time//1000) > 5:
+#         game_ended = False
+#         clock = pygame.time.get_ticks()
+#         print(clock//1000)

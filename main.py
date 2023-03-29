@@ -33,7 +33,7 @@ def main(timemer=None):
     finish = False
     x1 = 0
     atak = 'first'
-
+    timer_start_bose = 0
     lives = 180
 
     flur_y = -350
@@ -101,6 +101,18 @@ def main(timemer=None):
 
 
     while not finish:
+        timemer = pygame.time.get_ticks()
+
+
+
+
+
+
+
+
+
+
+
 
         # Load the music file
         screen.fill((0,0,0))
@@ -348,21 +360,18 @@ def main(timemer=None):
                     if Screen_mode == 'opening':
                         Screen_mode = 'shop'
 
-
         if Screen_mode == 'bose':
 
-
-
-            level_bose(deracsen, pleyer_image, x, y, atak, a, live)
+            level_bose(deracsen, pleyer_image, x, y, atak, a, live,timer_start_bose)
             atak_1 = [100, 300, True]
             atak_2 = [200, 200, True]
 
-            timemer = pygame.time.get_ticks()
-            timemer1 = pygame.time.set_timer(timemer, 10000)
-            print(timemer1)
+
+            # timemer1 = pygame.time.set_timer(timemer, 10000)
+            # print(timemer1)
             # atak 1
 
-            if 5000 < timemer < 7000:
+            if timer_start_bose + 5000 < timemer < timer_start_bose + 7000:
                 image = pygame.image.load(hegrof)
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
@@ -375,7 +384,7 @@ def main(timemer=None):
                 p = pygame.transform.scale(p, (100, 100))
                 screen.blit(p, (atak_1[0], atak_1[1]))
 
-            elif 7000 < timemer < 8000:
+            elif timer_start_bose + 7000 < timemer < timer_start_bose + 8000:
                 image = pygame.image.load(xx)
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
@@ -385,7 +394,7 @@ def main(timemer=None):
                     live -= 1
                     atak_1[2] = False
 
-            elif 10000 < timemer < 14000:
+            elif timer_start_bose + 10000 < timemer < timer_start_bose + 14000:
                 image = pygame.image.load(hegrof)
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
@@ -398,7 +407,7 @@ def main(timemer=None):
                 p = pygame.transform.scale(p, (100, 100))
                 screen.blit(p, (atak_1[0] + 200, atak_1[1] - 100))
 
-            elif 14000 < timemer < 15000:
+            elif timer_start_bose + 14000 < timemer < timer_start_bose + 15000:
                 image = pygame.image.load(xx)
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
@@ -409,7 +418,7 @@ def main(timemer=None):
                     atak_1[2] = False
 
 
-            elif timemer > 15000 and timemer < 18000:
+            elif timer_start_bose + timemer > 15000 and timer_start_bose + timemer < 18000:
                 image = pygame.image.load(hegrof)
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
@@ -422,7 +431,7 @@ def main(timemer=None):
                 p = pygame.transform.scale(p, (100, 100))
                 screen.blit(p, (atak_1[0] + 100, atak_1[1] - 50))
 
-            elif 18000 < timemer < 19000:
+            elif timer_start_bose + 18000 < timemer < timer_start_bose + 19000:
                 image = pygame.image.load(xx)
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
@@ -432,14 +441,14 @@ def main(timemer=None):
                     live -= 1
                     atak_1[2] = False
             # atak 2
-            if 20000 < timemer < 21000:
+            if timer_start_bose + 20000 < timemer < timer_start_bose + 21000:
                 square = pygame.Rect(300, 80, hand_1, 20)
                 pygame.draw.rect(screen, (0, 10, 10), square)
                 hand_1 += 10
 
                 square = pygame.Rect(100, 50, 20, 500)
                 pygame.draw.rect(screen, (250, 0, 0), square)
-            if 21000 < timemer < 22500:
+            if timer_start_bose + 21000 < timemer < timer_start_bose + 22500:
 
                 square = pygame.Rect(300, 80, hand_1, 20)
                 pygame.draw.rect(screen, (0, 10, 10), square)
@@ -450,13 +459,13 @@ def main(timemer=None):
                 if 100 < y + 5 < 20 and 100 < x + 5 < 120:
                     live -= 1
 
-            if 20500 < timemer < 21500:
+            if timer_start_bose + 20500 < timemer < timer_start_bose + 21500:
                 square = pygame.Rect(300, 90, hand_2, 20)
                 pygame.draw.rect(screen, (20, 10, 20), square)
                 hand_2 += 10
                 square = pygame.Rect(0, 150, 500, 20)
                 pygame.draw.rect(screen, (250, 0, 0), square)
-            if 21500 < timemer < 23000:
+            if timer_start_bose + 21500 < timemer < timer_start_bose + 23000:
                 square = pygame.Rect(300, 90, hand_2, 20)
                 pygame.draw.rect(screen, (0, 10, 10), square)
                 hand_2 += 10
@@ -465,13 +474,13 @@ def main(timemer=None):
                 if 0 < x + 5 < 500 and 150 < y + 5 < 170:
                     live -= 1
 
-            if 21500 < timemer < 22500:
+            if timer_start_bose + 21500 < timemer < timer_start_bose + 22500:
                 square = pygame.Rect(300, 110, hand_3, 20)
                 pygame.draw.rect(screen, (0, 10, 10), square)
                 hand_3 += 10
                 square = pygame.Rect(350, 50, 20, 500)
                 pygame.draw.rect(screen, (250, 0, 0), square)
-            if 22500 < timemer < 23500:
+            if timer_start_bose + 22500 < timemer < timer_start_bose + 23500:
                 square = pygame.Rect(300, 110, hand_3, 20)
                 pygame.draw.rect(screen, (0, 10, 10), square)
                 hand_3 += 10
@@ -482,7 +491,7 @@ def main(timemer=None):
 
             # atak 3
 
-            if 3000 < timemer < 15000:
+            if timer_start_bose + 3000 < timemer < timer_start_bose + 15000:
                 rains = []
                 times = []
                 for i in range(100):
@@ -504,7 +513,7 @@ def main(timemer=None):
                         pygame.draw.rect(screen, (0, 10, 10), square)
                         # if rains[i][0] < pos_x + 5 < rains[i][0] + 20 and rains[i][1] < pos_y + 5 < rains[i][1] + 20:
                         #     live -= 1
-            if timemer > 30000:
+            if timemer > timer_start_bose + 30000:
                 Screen_mode = 'win'
             if shoott:
                 x = 210
@@ -592,6 +601,7 @@ def main(timemer=None):
 
                 if (370 <= pos[0] <= 470) and (30 <= pos[1] <= 130):
                     Screen_mode = 'bose'
+                    timer_start_bose = timemer
 
 
 

@@ -49,7 +49,7 @@ from classs import *
 screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), pygame.RESIZABLE)
 
 
-def level_bose(deracsen, pleyer_image, x, y, atak, a, live):
+def level_bose(deracsen, pleyer_image, x, y, atak, a, live,timer_start_bose):
     # baceraund
     img = pygame.image.load(flure)
     img = pygame.transform.scale(img,
@@ -96,7 +96,7 @@ def level_bose(deracsen, pleyer_image, x, y, atak, a, live):
     screen.blit(text, (10, 10))
     timea = pygame.time.get_ticks()
     font = pygame.font.Font(None, 36)
-    text = font.render("time:  {}".format(timea // 1000), True, (250, 0, 250))
+    text = font.render("time:  {}".format((timea - timer_start_bose) // 1000), True, (250, 0, 250))
     screen.blit(text, (400, 10))
     screen.blit(text1, (setting_x, setting_y))
 
