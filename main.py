@@ -312,7 +312,7 @@ def main(timemer=None):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
 
-                if Screen_mode == 'win':
+                if Screen_mode == 'win' or Screen_mode == 'lose':
                     pos = pygame.mouse.get_pos()
                     print(pos)
                     if (140 < pos[0] < 340) and (210 < pos[1] < 270):
@@ -361,15 +361,21 @@ def main(timemer=None):
                         Screen_mode = 'shop'
 
         if Screen_mode == 'bose':
+            if live < 0:
+                Screen_mode = 'lose'
 
             level_bose(deracsen, pleyer_image, x, y, atak, a, live,timer_start_bose)
             atak_1 = [100, 300, True]
             atak_2 = [200, 200, True]
+            if timer_start_bose + 1000 < timemer < timer_start_bose + 2000:
+                font = pygame.font.SysFont(None, 40)
+                text1 = font.render('you ur uglei', True, (0, 10, 10))
+                screen.blit(text1, [30, 60])
 
-
-            # timemer1 = pygame.time.set_timer(timemer, 10000)
-            # print(timemer1)
-            # atak 1
+            if timer_start_bose + 1800 < timemer < timer_start_bose + 2400:
+                font = pygame.font.SysFont(None, 40)
+                text1 = font.render('no', True, (0, 10, 10))
+                screen.blit(text1, [150, 150])
 
             if timer_start_bose + 5000 < timemer < timer_start_bose + 7000:
                 image = pygame.image.load(hegrof)
@@ -646,7 +652,8 @@ def main(timemer=None):
             shop(coins_1, speed_cion_sail)
             if (30 <= pos[0] <= 130) and (400 <= pos[1] <= 460):
                 Screen_mode = 'opening'
-
+        elif Screen_mode == 'lose':
+            lose()
         if shoott:
             x = 220
             y = 220

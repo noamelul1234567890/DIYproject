@@ -324,3 +324,19 @@ def win_game():
     font = pygame.font.SysFont(None, 100)
     text = font.render('you win!!!', True, (250, 250, 0))
     screen.blit(text, [start_level1_buttons_x_pos + 50, start_level1_buttons_y_pos + 10])
+
+def lose():
+    # bakeruond
+    square = pygame.Rect(0, 0, 1000, 1000)
+    pygame.draw.rect(screen, (0, 0, 0), square)
+    # bake to levels butom
+    square = pygame.Rect(140, 270, 200, 60)
+    pygame.draw.rect(screen, (250, 20, 0), square)
+
+    font = pygame.font.SysFont(None, 100)
+    text1 = font.render('levels', True, (0, 10, 10))
+    screen.blit(text1, [140, 270])
+    # print you win
+    font = pygame.font.SysFont(None, 100)
+    text = font.render('you lose!!!', True, (250, 250, 0))
+    screen.blit(text, [start_level1_buttons_x_pos + 50, start_level1_buttons_y_pos + 10])
