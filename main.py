@@ -234,7 +234,7 @@ def main():
         if hitnagsot(anemy):
             lives -= 10
             if lives == 0:
-                Screen_mode = 'levels'
+                Screen_mode = 'lose'
 
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
