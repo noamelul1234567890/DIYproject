@@ -5,6 +5,7 @@ from g import *
 from screen_puse import *
 from pygame.locals import *
 from pygame import mixer
+import time
 
 
 Screen_mode = 'opening'
@@ -16,7 +17,7 @@ font = pygame.font.SysFont('Aharoni', 40)
 text1 = font.render(setting_text, True, WHITE)
 
 
-def main():
+def main(timemer=None):
 
     global screen, Screen_mode, event, pos, player_image, live, pos_x, pos_y, time
     pygame.mixer.init()
@@ -30,7 +31,7 @@ def main():
     screen = pygame.display.set_mode(screen_size)
     pygame.init()
     finish = False
-
+    x1 = 0
     atak = 'first'
 
     lives = 180
@@ -85,7 +86,7 @@ def main():
     steps = [step1, step2, step3, step4, step5, step6, step7, step8, step9, step10]
 
     speed_cion_sail = False
-    speed_a = 0
+    speed_a: int = 0
     shoott = False
     shoot_Valuable = [220, 220, 10, 10]
     x = 210
@@ -100,6 +101,7 @@ def main():
 
 
     while not finish:
+
         # Load the music file
         screen.fill((0,0,0))
 
@@ -124,7 +126,7 @@ def main():
                                  animals_2,
                                  deracsen ,text1)
                 if Screen_mode == 'bose':
-                    y += 0.2
+                    y += 0.5
                     if y > 475:
                         y -= 1
                 all_y_up(walls, flur_y, coins_1, walls_level_1, Screen_mode,
@@ -158,7 +160,7 @@ def main():
                                  deracsen, text1)
 
                 if Screen_mode == 'bose':
-                    y -= 0.2
+                    y -= 0.5
                     if y < 0:
                         y += 1
                 all_y_down(walls, flur_y, coins_1, walls_level_1, Screen_mode,
@@ -193,7 +195,7 @@ def main():
                                  animals_2,
                                  deracsen, text1)
                 if Screen_mode == 'bose':
-                    x += 0.2
+                    x += 0.5
                     if x > 475:
                         x -= 1
                 all_x_left(walls, flur_x, coins_1, walls_level_1, Screen_mode,
@@ -223,7 +225,7 @@ def main():
                                  animals_2,
                                  deracsen,text1)
                 if Screen_mode == 'bose':
-                    x -= 0.2
+                    x -= 0.5
                     if x < 0:
                         x += 1
                 all_x_rite(walls, flur_x, coins_1, walls_level_1, Screen_mode,
@@ -255,7 +257,10 @@ def main():
                 go_rite = False
                 go_left = False
                 if event.key == pygame.K_x:
+
+
                     if Screen_mode == 'bose':
+
                         shoott = True
                         pos_x = x
                         pos_y = y
@@ -316,7 +321,7 @@ def main():
 
                 if ((setting_x <= pos[0] <= setting_x + settin_width) and
                         (setting_y <= pos[1] <= setting_y + setting_hight)):
-                    chack_if_exit_or_resume = display_pause_screen(Screen_mode)
+                    chack_if_exit_or_resume = display_pause_screen()
                     if chack_if_exit_or_resume == True:
                         Screen_mode = 'levels'
                     elif chack_if_exit_or_resume == "level 1":
@@ -327,7 +332,7 @@ def main():
                         if speed_cion_sail == False:
                             if num_of_coin >= 2:
                                 speed_cion_sail = True
-                                speed_a += 3
+                                speed_a += 2
                                 num_of_coin -= 2
                 if Screen_mode == 'opening':
                     if ((start_buttons_x_pos <= pos[0] <= start_buttons_x_pos + start_buttons_width) and (
@@ -345,14 +350,19 @@ def main():
 
 
         if Screen_mode == 'bose':
+
+
+
             level_bose(deracsen, pleyer_image, x, y, atak, a, live)
             atak_1 = [100, 300, True]
             atak_2 = [200, 200, True]
 
-            time = pygame.time.get_ticks()
+            timemer = pygame.time.get_ticks()
+            timemer1 = pygame.time.set_timer(timemer, 10000)
+            print(timemer1)
             # atak 1
 
-            if 5000 < time < 7000:
+            if 5000 < timemer < 7000:
                 image = pygame.image.load(hegrof)
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
@@ -365,7 +375,7 @@ def main():
                 p = pygame.transform.scale(p, (100, 100))
                 screen.blit(p, (atak_1[0], atak_1[1]))
 
-            elif 7000 < time < 8000:
+            elif 7000 < timemer < 8000:
                 image = pygame.image.load(xx)
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
@@ -375,7 +385,7 @@ def main():
                     live -= 1
                     atak_1[2] = False
 
-            elif 10000 < time < 14000:
+            elif 10000 < timemer < 14000:
                 image = pygame.image.load(hegrof)
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
@@ -388,7 +398,7 @@ def main():
                 p = pygame.transform.scale(p, (100, 100))
                 screen.blit(p, (atak_1[0] + 200, atak_1[1] - 100))
 
-            elif 14000 < time < 15000:
+            elif 14000 < timemer < 15000:
                 image = pygame.image.load(xx)
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
@@ -399,7 +409,7 @@ def main():
                     atak_1[2] = False
 
 
-            elif time > 15000 and time < 18000:
+            elif timemer > 15000 and timemer < 18000:
                 image = pygame.image.load(hegrof)
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
@@ -412,7 +422,7 @@ def main():
                 p = pygame.transform.scale(p, (100, 100))
                 screen.blit(p, (atak_1[0] + 100, atak_1[1] - 50))
 
-            elif 18000 < time < 19000:
+            elif 18000 < timemer < 19000:
                 image = pygame.image.load(xx)
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
@@ -422,14 +432,14 @@ def main():
                     live -= 1
                     atak_1[2] = False
             # atak 2
-            if 20000 < time < 21000:
+            if 20000 < timemer < 21000:
                 square = pygame.Rect(300, 80, hand_1, 20)
                 pygame.draw.rect(screen, (0, 10, 10), square)
                 hand_1 += 10
 
                 square = pygame.Rect(100, 50, 20, 500)
                 pygame.draw.rect(screen, (250, 0, 0), square)
-            if 21000 < time < 22500:
+            if 21000 < timemer < 22500:
 
                 square = pygame.Rect(300, 80, hand_1, 20)
                 pygame.draw.rect(screen, (0, 10, 10), square)
@@ -440,13 +450,13 @@ def main():
                 if 100 < y + 5 < 20 and 100 < x + 5 < 120:
                     live -= 1
 
-            if 20500 < time < 21500:
+            if 20500 < timemer < 21500:
                 square = pygame.Rect(300, 90, hand_2, 20)
                 pygame.draw.rect(screen, (20, 10, 20), square)
                 hand_2 += 10
                 square = pygame.Rect(0, 150, 500, 20)
                 pygame.draw.rect(screen, (250, 0, 0), square)
-            if 21500 < time < 23000:
+            if 21500 < timemer < 23000:
                 square = pygame.Rect(300, 90, hand_2, 20)
                 pygame.draw.rect(screen, (0, 10, 10), square)
                 hand_2 += 10
@@ -455,13 +465,13 @@ def main():
                 if 0 < x + 5 < 500 and 150 < y + 5 < 170:
                     live -= 1
 
-            if 21500 < time < 22500:
+            if 21500 < timemer < 22500:
                 square = pygame.Rect(300, 110, hand_3, 20)
                 pygame.draw.rect(screen, (0, 10, 10), square)
                 hand_3 += 10
                 square = pygame.Rect(350, 50, 20, 500)
                 pygame.draw.rect(screen, (250, 0, 0), square)
-            if 22500 < time < 23500:
+            if 22500 < timemer < 23500:
                 square = pygame.Rect(300, 110, hand_3, 20)
                 pygame.draw.rect(screen, (0, 10, 10), square)
                 hand_3 += 10
@@ -472,10 +482,10 @@ def main():
 
             # atak 3
 
-            if 3000 < time < 15000:
+            if 3000 < timemer < 15000:
                 rains = []
                 times = []
-                for i in range(20):
+                for i in range(100):
                     xxx = random.randint(0, 480)
                     yyy = random.randint(50, 480)
                     time = random.randint(1000, 2000)
@@ -483,18 +493,18 @@ def main():
                     times.append(time)
 
                 time_10 = pygame.time.get_ticks()
-                for i in range(20):
+                for i in range(100):
                     if times[i] < time_10 < times[i] + 1000:
                         square = pygame.Rect(rains[i][0], rains[i][1], 20, 20)
                         pygame.draw.rect(screen, (250, 0, 0), square)
 
-                for i in range(20):
+                for i in range(100):
                     if time_10 + 1000 > times[i] and time_10 < times[i] + 2000:
                         square = pygame.Rect(rains[i][0], rains[i][1], 20, 20)
                         pygame.draw.rect(screen, (0, 10, 10), square)
                         # if rains[i][0] < pos_x + 5 < rains[i][0] + 20 and rains[i][1] < pos_y + 5 < rains[i][1] + 20:
                         #     live -= 1
-            if time > 30000:
+            if timemer > 30000:
                 Screen_mode = 'win'
             if shoott:
                 x = 210
@@ -582,17 +592,16 @@ def main():
 
                 if (370 <= pos[0] <= 470) and (30 <= pos[1] <= 130):
                     Screen_mode = 'bose'
-                    time = 0
+
+
+
+
+
                     pygame.mixer.music.load(boss_sound)
                     # Set the volume
 
                     # Play the music
                     pygame.mixer.music.play()
-
-
-
-
-
                     live = 180
 
         if Screen_mode == 'win':
