@@ -73,10 +73,11 @@ def main():
 
     animal1 = animal(250, 0, 50, 50, 10, hatalef_left, True, 350, 200, True)
     animal2 = animal(-250, -200, 50, 50, 10, hatalef_left, True, 90, 0, True)
-    animal3 = animal(100, 100, 50, 50, 60, hatalef_left, True, 10, 0, True)
-    anemy = [animal1, animal2, animal3]
+    animal3 = animal(100, 300, 50, 50, 10, hatalef_left, True, 5000,-1000, True)
+    animal4 = animal(-250, -160, 50, 50, 10, hatalef_left, True, 150, 10, True)
+    anemy = [animal1, animal2, animal3,animal4]
 
-    animals_2 = [animal1]
+    animals_2 = [animal1,animal4]
     steps = [step1, step2, step3, step4, step5, step6, step7, step8, step9, step10]
 
     speed_cion_sail = False
@@ -570,7 +571,9 @@ def main():
                     animal1 = animal(250, 0, 50, 50, 10, hatalef_left, True, 350, 200, True)
                     animal2 = animal(-250, -200, 50, 50, 10, hatalef_left, True, 90, 0, True)
                     animal3 = animal(0, 0, 50, 50, 10, hatalef_left, True, 10, 0, True)
-                    anemy = [animal1, animal2, animal3]
+                    animal4 = animal(-250, -160, 50, 50, 10, hatalef_left, True, 150, 10, True)
+
+                    anemy = [animal1, animal2, animal3,animal4]
                     flur_y = -350
                     flur_x = -250
 
