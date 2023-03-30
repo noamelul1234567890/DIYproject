@@ -525,7 +525,7 @@ def main():
 
             if timer_start_bose + 25000 < timemer < timer_start_bose + 30000:
                 font = pygame.font.SysFont(None, 60)
-                text2 = font.render('i play fortinait', True, (0, 10, 10))
+                text2 = font.render('i play fortinit', True, (0, 10, 10))
                 screen.blit(text2, [150, 200])
 
 
@@ -540,6 +540,9 @@ def main():
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
                 screen.blit(p, (200, x_fire))
+                if x_fire < y +5 < x_fire + 100 and 200 < x + 5 < 300:
+                    live -= 1
+
 
             if timer_start_bose + 28000 < timemer < timer_start_bose + 35000:
                 image = pygame.image.load(firefire)

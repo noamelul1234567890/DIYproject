@@ -32,6 +32,8 @@ flure = 'Images//f.jpg'
 bose = 'Images//bose.png'
 hegrof = 'Images//hegrof.png'
 win_screen = 'Images//win_screen1.png'
+fire = 'Images//fire.png'
+firefire = 'Images//firefire.png'
 #sounds
 WIN_SCREEN_SOUND = 'sound_win.mp3'
 bg_sound = 'bg_sound.mp3'
