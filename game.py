@@ -271,6 +271,9 @@ def win_game():
     # bakeruond
     square = pygame.Rect(0, 0, 1000, 1000)
     pygame.draw.rect(screen, (0, 0, 0), square)
+    img = pygame.image.load(win_screen)
+    img = pygame.transform.scale(img, (480, 480))
+    screen.blit(img, (10, 10))
     # bake to levels butom
     square = pygame.Rect(140, 210, 200, 60)
     pygame.draw.rect(screen, (250, 20, 0), square)
@@ -289,6 +292,9 @@ def lose():
     # bakeruond
     square = pygame.Rect(0, 0, 1000, 1000)
     pygame.draw.rect(screen, (0, 0, 0), square)
+    img = pygame.image.load(sad)
+    img = pygame.transform.scale(img, (480, 480))
+    screen.blit(img, (10, 10))
     # bake to levels butom
     square = pygame.Rect(140, 270, 200, 60)
     pygame.draw.rect(screen, (250, 20, 0), square)
@@ -297,5 +303,5 @@ def lose():
     screen.blit(text1, [140, 270])
     # print you win
     font = pygame.font.SysFont(None, 100)
-    text = font.render('you lose!!!', True, (250, 250, 0))
+    text = font.render('you lose!!!', True, (250, 250, 250))
     screen.blit(text, [start_level1_buttons_x_pos + 50, start_level1_buttons_y_pos + 10])
