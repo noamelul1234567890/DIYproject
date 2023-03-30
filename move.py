@@ -61,6 +61,7 @@ def all_y_up(walls, flur_y, coins,walls_level_1,Screen_mode,levels_2,animals,spe
         animals[0].y_pos -= speed+speed_a
         animals[1].y_pos -= speed+speed_a
         animals[2].y_pos -= speed+speed_a
+        animals[3].y_pos -= speed + speed_a
     if Screen_mode == 'level 2':
         levels_2[1] -= speed+speed_a
 
@@ -80,5 +81,6 @@ def all_y_down(walls, flur_y, coins,walls_level_1,Screen_mode,levels_2,animals,s
         animals[0].y_pos += speed+speed_a
         animals[1].y_pos += speed+speed_a
         animals[2].y_pos += speed+speed_a
+        animals[3].y_pos += speed + speed_a
     if Screen_mode == 'level 2':
         levels_2[1] += speed+speed_a

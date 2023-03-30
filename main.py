@@ -32,10 +32,10 @@ def main():
 
     timer_start_bose = 0
     lives = 180
-
-    flur_y = -300
+    fire_on = True
+    flur_y = -350
     flur_x = -250
-
+    x_fire = 140
     levels_screen_x = 0
     levels_screen_y = 0
     levels_screen_w = 600
@@ -73,10 +73,11 @@ def main():
 
     animal1 = animal(250, 0, 50, 50, 10, hatalef_left, True, 350, 200, True)
     animal2 = animal(-250, -200, 50, 50, 10, hatalef_left, True, 90, 0, True)
-    animal3 = animal(100, 100, 50, 50, 60, hatalef_left, True, 10, 0, True)
-    anemy = [animal1, animal2, animal3]
+    animal3 = animal(100, 300, 50, 50, 10, hatalef_left, True, 5000,-1000, True)
+    animal4 = animal(-250, -160, 50, 50, 10, hatalef_left, True, 150, 10, True)
+    anemy = [animal1, animal2, animal3,animal4]
 
-    animals_2 = [animal1]
+    animals_2 = [animal1,animal4]
     steps = [step1, step2, step3, step4, step5, step6, step7, step8, step9, step10]
 
     speed_cion_sail = False
@@ -108,7 +109,7 @@ def main():
                 if Screen_mode == 'level 1':
                     bild_level_1(1000, 1000, walls, pleyer_image, coins_1,
                                  anemy,
-                                 lives, deracsen, text2, )
+                                 lives, deracsen, text1, )
                     limit(flur_x, flur_y, walls, coins_1, walls_level_1,
                           Screen_mode, levels_2)
                 if Screen_mode == 'level 2':
@@ -141,13 +142,13 @@ def main():
                 if Screen_mode == 'level 1':
                     bild_level_1(1000, 1000, walls, pleyer_image, coins_1,
                                  anemy,
-                                 lives, deracsen, text2, )
+                                 lives, deracsen, text1, )
                     limit(flur_x, flur_y, walls, coins_1, walls_level_1,
                           Screen_mode, levels_2)
                 if Screen_mode == 'level 2':
                     bild_level_2(pleyer_image, levels_2, lives, coins_1,
                                  animals_2,
-                                 deracsen, text2)
+                                 deracsen, text1)
 
                 if Screen_mode == 'bose':
                     y -= 0.5
@@ -177,7 +178,7 @@ def main():
                 if Screen_mode == 'level 1':
                     bild_level_1(1000, 1000, walls, pleyer_image, coins_1,
                                  anemy,
-                                 lives, deracsen, text2, )
+                                 lives, deracsen, text1, )
                     limit(flur_x, flur_y, walls, coins_1, walls_level_1,
                           Screen_mode, levels_2)
                 if Screen_mode == 'level 2':
@@ -185,7 +186,7 @@ def main():
                                  animals_2,
                                  deracsen, text1)
                 if Screen_mode == 'bose':
-                    x += 0.8
+                    x += 0.5
                     if x > 475:
                         x -= 1
                 all_x_left(walls, flur_x, coins_1, walls_level_1, Screen_mode,
@@ -207,7 +208,7 @@ def main():
                 if Screen_mode == 'level 1':
                     bild_level_1(1000, 1000, walls, pleyer_image, coins_1,
                                  anemy,
-                                 lives, deracsen, text2, )
+                                 lives, deracsen, text1, )
                     limit(flur_x, flur_y, walls, coins_1, walls_level_1,
                           Screen_mode, levels_2)
                 if Screen_mode == 'level 2':
@@ -235,8 +236,7 @@ def main():
             lives -= 10
             if lives == 0:
                 Screen_mode = 'lose'
-        font = pygame.font.SysFont(None, 40)
-        text2 = font.render(setting_text, True, (0, 10, 10))
+
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
 
@@ -280,7 +280,7 @@ def main():
                     pos = pygame.mouse.get_pos()
                     if ((setting_x <= pos[0] <= setting_x + 150) and
                             (setting_y <= pos[1] <= setting_y + setting_hight)):
-                        chack_if_exit_or_resume = display_pause_screen(Screen_mode)
+                        chack_if_exit_or_resume = display_pause_screen()
                         if chack_if_exit_or_resume == True:
                             Screen_mode = 'levels'
                         elif chack_if_exit_or_resume == "level 1":
@@ -310,7 +310,7 @@ def main():
 
                 if ((setting_x <= pos[0] <= setting_x + settin_width) and
                         (setting_y <= pos[1] <= setting_y + setting_hight)):
-                    chack_if_exit_or_resume = display_pause_screen(Screen_mode)
+                    chack_if_exit_or_resume = display_pause_screen()
                     if chack_if_exit_or_resume == True:
                         Screen_mode = 'levels'
                     elif chack_if_exit_or_resume == "level 1":
@@ -341,18 +341,19 @@ def main():
             if live < 0:
                 Screen_mode = 'lose'
 
+
             level_bose(deracsen, pleyer_image, x, y, atak, a, live,timer_start_bose)
             atak_1 = [100, 300, True]
 
             if timer_start_bose + 1000 < timemer < timer_start_bose + 2000:
                 font = pygame.font.SysFont(None, 40)
-                text1 = font.render('you ur ugly', True, (0, 10, 10))
-                screen.blit(text1, [30, 60])
+                text2 = font.render('you ur uglei', True, (0, 10, 10))
+                screen.blit(text2, [30, 60])
 
             if timer_start_bose + 1800 < timemer < timer_start_bose + 3000:
                 font = pygame.font.SysFont(None, 60)
-                text1 = font.render('no', True, (0, 10, 10))
-                screen.blit(text1, [150, 200])
+                text2 = font.render('no', True, (0, 10, 10))
+                screen.blit(text2, [150, 200])
 
             if timer_start_bose + 5000 < timemer < timer_start_bose + 7000:
                 image = pygame.image.load(hegrof)
@@ -427,7 +428,7 @@ def main():
                 p = pygame.transform.scale(p, (100, 100))
                 screen.blit(p, (300, yui_3))
                 if yui_3 < 130:
-                    yui_3 += 1
+                    yui_3 += 2
 
                 image = pygame.image.load(rto)
                 p = pygame.transform.rotate(image, 180)
@@ -514,19 +515,40 @@ def main():
                         square = pygame.Rect(rains[i][0], rains[i][1], 20, 20)
                         pygame.draw.rect(screen, (0, 10, 10), square)
 
-            if timemer > timer_start_bose + 30000:
+            if timemer > timer_start_bose + 36000:
                 Screen_mode = 'win'
 
             if timer_start_bose + 24000 < timemer < timer_start_bose + 26000:
                 font = pygame.font.SysFont(None, 40)
-                text1 = font.render('how you do that?', True, (0, 10, 10))
-                screen.blit(text1, [30, 60])
+                text2 = font.render('how you do it?', True, (0, 10, 10))
+                screen.blit(text2, [30, 60])
 
             if timer_start_bose + 25000 < timemer < timer_start_bose + 30000:
                 font = pygame.font.SysFont(None, 60)
-                text1 = font.render('i play fortnit,and u?'
-                                    ' ', True, (0, 10, 10))
-                screen.blit(text1, [150, 200])
+                text2 = font.render('i play fortinait', True, (0, 10, 10))
+                screen.blit(text2, [150, 200])
+
+
+            if timer_start_bose + 25000 < timemer < timer_start_bose + 30000:
+                if fire_on:
+                    x_fire += 2
+                    if x_fire > 400:
+                        fire_on = False
+                else:
+                    x_fire -= 2
+                image = pygame.image.load(fire)
+                p = pygame.transform.rotate(image, 180)
+                p = pygame.transform.scale(p, (100, 100))
+                screen.blit(p, (200, x_fire))
+
+            if timer_start_bose + 28000 < timemer < timer_start_bose + 35000:
+                image = pygame.image.load(firefire)
+                p = pygame.transform.rotate(image, 0)
+                p = pygame.transform.scale(p, (200, 200))
+                screen.blit(p, (150, -30))
+
+
+
 
             if shoott:
                 x = 210
@@ -572,7 +594,9 @@ def main():
                     animal1 = animal(250, 0, 50, 50, 10, hatalef_left, True, 350, 200, True)
                     animal2 = animal(-250, -200, 50, 50, 10, hatalef_left, True, 90, 0, True)
                     animal3 = animal(0, 0, 50, 50, 10, hatalef_left, True, 10, 0, True)
-                    anemy = [animal1, animal2, animal3]
+                    animal4 = animal(-250, -160, 50, 50, 10, hatalef_left, True, 150, 10, True)
+
+                    anemy = [animal1, animal2, animal3,animal4]
                     flur_y = -350
                     flur_x = -250
 
@@ -628,19 +652,15 @@ def main():
 
 
 
-
-
-
         elif Screen_mode == 'level 1':
             time = pygame.time.get_ticks()
-            bild_level_1(flur_x, flur_y, walls, pleyer_image, coins_1, anemy,
-                         lives, deracsen, text2,)
+            bild_level_1(flur_x, flur_y, walls, pleyer_image, coins_1, anemy, lives, deracsen, text1,)
 
         elif Screen_mode == 'level 2':
 
             levels_screen(levels_screen_x, levels_screen_y, levels_screen_w, levels_screen_h)
             bild_level_2(pleyer_image, levels_2, lives, coins_1, animals_2,
-                         deracsen,text2)
+                         deracsen,text1)
             wall1 = wall(-200, -360, wall_w1, wall_h1)
             wall2 = wall(-210, -350, wall_w2, wall_h2)
             wall3 = wall(400, -360, wall_w3, wall_h3)
