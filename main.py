@@ -3,8 +3,6 @@ from opening import *
 from move import *
 from screen_puse import *
 
-
-
 Screen_mode = 'opening'
 x = 0
 y = 0
@@ -15,21 +13,17 @@ text1 = font.render(setting_text, True, WHITE)
 
 
 def main():
-
     global screen, Screen_mode, event, pos, player_image, live, pos_x, pos_y, time, text1
     pygame.mixer.init()
     music1 = pygame.mixer.Sound(bg_sound)
     music2 = pygame.mixer.Sound(hitnagshut_sound)
 
     # Play both music files simultaneously
-
-
+    # setup all the variables
     screen_size = (WINDOW_WIDTH, WINDOW_HEIGHT)
     screen = pygame.display.set_mode(screen_size)
     pygame.init()
     finish = False
-
-
     timer_start_bose = 0
     lives = 180
     fire_on = True
@@ -40,11 +34,9 @@ def main():
     levels_screen_y = 0
     levels_screen_w = 600
     levels_screen_h = 600
-
     levels_2_x = -270
     levels_2_y = -740
     levels_2 = [levels_2_x, levels_2_y]
-
     # walls of level 1
     wall1 = wall(-200, -360, wall_w1, wall_h1)
     wall2 = wall(-210, -350, wall_w2, wall_h2)
@@ -54,13 +46,11 @@ def main():
     # coins
     print_coin_1 = True
     print_coin_2 = True
-
+    num_of_coin = 0
     coin_1 = [250, 60, 50, 50, coin, print_coin_1]
     coin_2 = [-100, -100, 50, 50, coin, print_coin_2]
-
-    num_of_coin = 0
-    coins_1 = [num_of_coin, coin_1, coin_2]
-
+    coin_3 = [0, 0, 50, 50, coin, True]
+    coins_1 = [num_of_coin, coin_1, coin_2, coin_3]
     pleyer_image = step1
     go_up = False
     go_down = False
@@ -70,16 +60,13 @@ def main():
     Screen_mode = 'opening'
     wall_001 = line_wall(200, 130, 200, 200)
     walls_level_1 = [wall_001]
-
     animal1 = animal(250, 0, 50, 50, 10, hatalef_left, True, 350, 200, True)
     animal2 = animal(-250, -200, 50, 50, 10, hatalef_left, True, 90, 0, True)
-    animal3 = animal(100, 300, 50, 50, 10, hatalef_left, True, 5000,-1000, True)
+    animal3 = animal(100, 300, 50, 50, 10, hatalef_left, True, 5000, -1000, True)
     animal4 = animal(-250, -160, 50, 50, 10, hatalef_left, True, 150, 10, True)
-    anemy = [animal1, animal2, animal3,animal4]
-
-    animals_2 = [animal1,animal4]
+    anemy = [animal1, animal2, animal3, animal4]
+    animals_2 = [animal1, animal4]
     steps = [step1, step2, step3, step4, step5, step6, step7, step8, step9, step10]
-
     speed_cion_sail = False
     speed_a: int = 0
     shoott = False
@@ -98,7 +85,7 @@ def main():
         timemer = pygame.time.get_ticks()
 
         # Load the music file
-        screen.fill((0,0,0))
+        screen.fill((0, 0, 0))
 
         if Screen_mode == 'level 1':
             limit(flur_x, flur_y, walls, coins_1, walls_level_1, Screen_mode, levels_2)
@@ -115,7 +102,7 @@ def main():
                 if Screen_mode == 'level 2':
                     bild_level_2(pleyer_image, levels_2, lives, coins_1,
                                  animals_2,
-                                 deracsen ,text1)
+                                 deracsen, text1)
                 if Screen_mode == 'bose':
                     y += 0.5
                     if y > 475:
@@ -152,7 +139,7 @@ def main():
 
                 if Screen_mode == 'bose':
                     y -= 0.5
-                    if y < 0:
+                    if y < 50:
                         y += 1
                 all_y_down(walls, flur_y, coins_1, walls_level_1, Screen_mode,
                            levels_2, anemy, speed_a, shoot_Valuable)
@@ -165,7 +152,7 @@ def main():
                     break
                 color = pygame.Surface.get_at(screen,
                                               (
-                                              pos_x + pleyer_width // 2, pos_y))
+                                                  pos_x + pleyer_width // 2, pos_y))
                 if color == (149, 94, 39, 255):
                     Screen_mode = 'win'
 
@@ -214,7 +201,7 @@ def main():
                 if Screen_mode == 'level 2':
                     bild_level_2(pleyer_image, levels_2, lives, coins_1,
                                  animals_2,
-                                 deracsen,text1)
+                                 deracsen, text1)
                 if Screen_mode == 'bose':
                     x -= 0.5
                     if x < 0:
@@ -248,7 +235,6 @@ def main():
                 go_rite = False
                 go_left = False
                 if event.key == pygame.K_x:
-
 
                     if Screen_mode == 'bose':
 
@@ -307,7 +293,6 @@ def main():
                         # Play the music
                         pygame.mixer.music.play()
 
-
                 if ((setting_x <= pos[0] <= setting_x + settin_width) and
                         (setting_y <= pos[1] <= setting_y + setting_hight)):
                     chack_if_exit_or_resume = display_pause_screen(Screen_mode)
@@ -341,8 +326,7 @@ def main():
             if live < 0:
                 Screen_mode = 'lose'
 
-
-            level_bose(deracsen, pleyer_image, x, y, atak, a, live,timer_start_bose)
+            level_bose(deracsen, pleyer_image, x, y, atak, a, live, timer_start_bose)
             atak_1 = [100, 300, True]
 
             if timer_start_bose + 1000 < timemer < timer_start_bose + 2000:
@@ -397,8 +381,6 @@ def main():
                     live -= 1
                     atak_1[2] = False
 
-
-
             if timer_start_bose + 10000 < timemer < timer_start_bose + 14000:
                 image = pygame.image.load(hegrof)
                 p = pygame.transform.rotate(image, 180)
@@ -420,7 +402,6 @@ def main():
                     1] - 100 < y + 5 < atak_1[1] and atak_1[2]:
                     live -= 1
                     atak_1[2] = False
-
 
             if timer_start_bose + timemer > 15000 and timer_start_bose + timemer < 18000:
                 image = pygame.image.load(hegrof)
@@ -518,16 +499,15 @@ def main():
             if timemer > timer_start_bose + 36000:
                 Screen_mode = 'win'
 
-            if timer_start_bose + 24000 < timemer < timer_start_bose + 26000:
+            if timer_start_bose + 30000 < timemer < timer_start_bose + 35000:
                 font = pygame.font.SysFont(None, 40)
                 text2 = font.render('how you do it?', True, (0, 10, 10))
                 screen.blit(text2, [30, 60])
 
-            if timer_start_bose + 25000 < timemer < timer_start_bose + 30000:
+            if timer_start_bose + 31000 < timemer < timer_start_bose + 35000:
                 font = pygame.font.SysFont(None, 60)
                 text2 = font.render('i play fortinit', True, (0, 10, 10))
                 screen.blit(text2, [150, 200])
-
 
             if timer_start_bose + 25000 < timemer < timer_start_bose + 30000:
                 if fire_on:
@@ -540,18 +520,14 @@ def main():
                 p = pygame.transform.rotate(image, 180)
                 p = pygame.transform.scale(p, (100, 100))
                 screen.blit(p, (200, x_fire))
-                if x_fire < y +5 < x_fire + 100 and 200 < x + 5 < 300:
+                if x_fire < y + 5 < x_fire + 100 and 200 < x + 5 < 300:
                     live -= 1
-
 
             if timer_start_bose + 28000 < timemer < timer_start_bose + 35000:
                 image = pygame.image.load(firefire)
                 p = pygame.transform.rotate(image, 0)
                 p = pygame.transform.scale(p, (200, 200))
                 screen.blit(p, (150, -30))
-
-
-
 
             if shoott:
                 x = 210
@@ -591,15 +567,16 @@ def main():
                     wall4 = wall(-210, 241, wall_w4, wall_h4)
                     walls = [wall1, wall2, wall3, wall4]
                     lives = 180
-                    coin_1 = [250, 60, 30, 30, coin, print_coin_1]
+                    coin_1 = [250, 80, 30, 30, coin, print_coin_1]
                     coin_2 = [-100, -100, 30, 30, coin, print_coin_2]
-                    coins_1 = [num_of_coin, coin_1, coin_2]
+                    coin_3 = [350, 80, 30, 30, coin, True]
+                    coins_1 = [num_of_coin, coin_1, coin_2, coin_3]
                     animal1 = animal(250, 0, 50, 50, 10, hatalef_left, True, 350, 200, True)
                     animal2 = animal(-250, -200, 50, 50, 10, hatalef_left, True, 90, 0, True)
                     animal3 = animal(0, 0, 50, 50, 10, hatalef_left, True, 10, 0, True)
                     animal4 = animal(-250, -160, 50, 50, 10, hatalef_left, True, 150, 10, True)
 
-                    anemy = [animal1, animal2, animal3,animal4]
+                    anemy = [animal1, animal2, animal3, animal4]
                     flur_y = -350
                     flur_x = -250
 
@@ -616,7 +593,6 @@ def main():
                         # Play the music
                         pygame.mixer.music.play()
 
-
                 if Screen_mode == 'levels':
                     if (30 + 90 <= pos[0] <= 90 + 90) and (30 <= pos[1] <= 90):
                         Screen_mode = 'level 2'
@@ -627,7 +603,6 @@ def main():
                             # Set the volume
                             # Play the music
                             pygame.mixer.music.play()
-
 
                 if Screen_mode == 'levels':
                     pygame.mixer.music.stop()
@@ -657,13 +632,13 @@ def main():
 
         elif Screen_mode == 'level 1':
             time = pygame.time.get_ticks()
-            bild_level_1(flur_x, flur_y, walls, pleyer_image, coins_1, anemy, lives, deracsen, text1,)
+            bild_level_1(flur_x, flur_y, walls, pleyer_image, coins_1, anemy, lives, deracsen, text1, )
 
         elif Screen_mode == 'level 2':
 
             levels_screen(levels_screen_x, levels_screen_y, levels_screen_w, levels_screen_h)
             bild_level_2(pleyer_image, levels_2, lives, coins_1, animals_2,
-                         deracsen,text1)
+                         deracsen, text1)
             wall1 = wall(-200, -360, wall_w1, wall_h1)
             wall2 = wall(-210, -350, wall_w2, wall_h2)
             wall3 = wall(400, -360, wall_w3, wall_h3)
@@ -672,11 +647,14 @@ def main():
             lives = 180
             coin_1 = [250, 60, 30, 30, coin, print_coin_1]
             coin_2 = [-100, -100, 30, 30, coin, print_coin_2]
-            coins_1 = [num_of_coin, coin_1, coin_2]
+            coin_3 = [280, 60, 80, 80, coin, print_coin_1]
+            coins_1 = [num_of_coin, coin_1, coin_2, coin_3]
             animal1 = animal(250, 0, 50, 50, 10, hatalef_left, True, 0, 200, True)
             animal2 = animal(-250, -200, 50, 50, 10, hatalef_left, True, 90, 0, True)
             animal3 = animal(0, 0, 50, 50, 10, hatalef_left, True, 10, 0, True)
             anemy = [animal1, animal2, animal3]
+
+
 
         elif Screen_mode == 'shop':
             shop(coins_1, speed_cion_sail)
@@ -697,7 +675,7 @@ def main():
             if deracsen == 'go_down':
                 shoot_Valuable[1] += 10
                 if shoot_Valuable[1] > 500:
-                        shoott = False
+                    shoott = False
             if deracsen == 'go_up':
                 shoot_Valuable[1] -= 10
             if deracsen == 'go_rite':

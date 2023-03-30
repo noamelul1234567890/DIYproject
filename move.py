@@ -10,6 +10,7 @@ def all_x_rite(walls, flur_x, coins, walls_level_1, Screen_mode, levels_2, anemy
         walls[3].wall_x += speed+speed_a
         coins[1][0] += speed+speed_a
         coins[2][0] += speed+speed_a
+        coins[3][0] += speed + speed_a
         walls_level_1[0].x_start +=3
         walls_level_1[0].x_end += 3
         for i in range(len(anemy)):
@@ -23,7 +24,7 @@ def all_x_rite(walls, flur_x, coins, walls_level_1, Screen_mode, levels_2, anemy
             anemy[i].x_max += speed+speed_a
             anemy[i].x_min += speed+speed_a
     if Screen_mode == 'level 2':
-        levels_2[0] += speed
+        levels_2[0] += speed+speed_a
 
 
 def all_x_left(walls, flur_x, coins,walls_level_1,Screen_mode,levels_2,animals,speed_a,shoot_Valuable):
@@ -36,6 +37,7 @@ def all_x_left(walls, flur_x, coins,walls_level_1,Screen_mode,levels_2,animals,s
         walls[3].wall_x -= speed+speed_a
         coins[1][0] -= speed+speed_a
         coins[2][0] -= speed+speed_a
+        coins[3][0] -= speed + speed_a
         walls_level_1[0].x_start -= speed+speed_a
         walls_level_1[0].x_end -= speed+speed_a
         for i in range(len(animals)):
@@ -55,6 +57,7 @@ def all_y_up(walls, flur_y, coins,walls_level_1,Screen_mode,levels_2,animals,spe
         walls[3].wall_y -= speed+speed_a
         coins[1][1] -= speed+speed_a
         coins[2][1] -= speed+speed_a
+        coins[3][1] -= speed + speed_a
 
         walls_level_1[0].y_start -= speed+speed_a
         walls_level_1[0].y_end -= speed+speed_a
@@ -75,6 +78,7 @@ def all_y_down(walls, flur_y, coins,walls_level_1,Screen_mode,levels_2,animals,s
         walls[3].wall_y += speed+speed_a
         coins[1][1] += speed+speed_a
         coins[2][1] += speed+speed_a
+        coins[3][1] += speed + speed_a
 
         walls_level_1[0].y_start += speed+speed_a
         walls_level_1[0].y_end += speed+speed_a

@@ -93,18 +93,22 @@ def level_bose(deracsen, pleyer_image, x, y, atak, a, live,timer_start_bose):
     screen.blit(text, (10, 10))
     timea = pygame.time.get_ticks()
     font = pygame.font.Font(None, 36)
-    text = font.render("time:  {}".format((timea - timer_start_bose) // 1000), True, (250, 0, 250))
+    time_b =35
+    time_c = time_b - (timea - timer_start_bose)//1000
+    text = font.render("time:  {}".format((time_c)), True, (250, 0, 250))
     screen.blit(text, (400, 60))
     screen.blit(text1, (setting_x, setting_y))
 
 
 def levels_screen(levels_screen_x, levels_screen_y, levels_screen_w, levels_screen_h):
-    square = pygame.Rect(levels_screen_x, levels_screen_y, levels_screen_w, levels_screen_h)
-    pygame.draw.rect(screen, (200, 200, 250), square)
+    img = pygame.image.load(levels_image)
+    img = pygame.transform.scale(img,
+                                 (500,500))
+    screen.blit(img, (0, 0))
     square = pygame.Rect(start_level1_buttons_x_pos + 90, start_level1_buttons_y_pos, start_level1_buttons_width, start_level1_buttons_height)
-    pygame.draw.rect(screen, (100, 100, 250), square)
+    pygame.draw.rect(screen, (200, 00, 10), square)
     square = pygame.Rect(start_level1_buttons_x_pos, start_level1_buttons_y_pos, start_level1_buttons_width, start_level1_buttons_height)
-    pygame.draw.rect(screen, (100, 100, 250), square)
+    pygame.draw.rect(screen,(200, 00, 10), square)
     font = pygame.font.SysFont(None, 100)
     text = font.render('1', True, color)
     screen.blit(text, [start_level1_buttons_x_pos + 10, start_level1_buttons_y_pos + 3])
@@ -117,7 +121,7 @@ def levels_screen(levels_screen_x, levels_screen_y, levels_screen_w, levels_scre
     square = pygame.Rect(370, 30, 100, 100)
     pygame.draw.rect(screen, (200, 00, 10), square)
     font = pygame.font.SysFont(None, 55)
-    text = font.render('bose', True, (40, 0, 0))
+    text = font.render('boss', True, (40, 0, 0))
     screen.blit(text, [375, 60])
 
 def bild_level_2(pleyer_image, level_2, lives, coins, animals, deracsen, text1):
@@ -227,6 +231,11 @@ def limit(flur_x, flur_y, walls, coins, walls_level_1, Screen_mode, levels_2):
             coins[2][1] < pos_x + pleyer_height // 2 < coins[2][1] + coins[2][3]):
         if coins[2][5]:
             coins[2][5] = False
+            coins[0] += 1
+    if (coins[3][0] < pos_x + pleyer_width // 2 < coins[3][0] + coins[3][2]) and (
+            coins[3][1] < pos_x + pleyer_height // 2 < coins[3][1] + coins[3][3]):
+        if coins[3][5]:
+            coins[3][5] = False
             coins[0] += 1
     p = [flur_x, flur_y, walls, coins[0]]
     return p

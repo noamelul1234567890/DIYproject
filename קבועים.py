@@ -35,6 +35,7 @@ win_screen = 'Images//win_screen1.png'
 fire = 'Images//fire.png'
 firefire = 'Images//firefire.png'
 sad = 'Images//sad.png'
+levels_image = 'Images//bg_level.jpg'
 #sounds
 WIN_SCREEN_SOUND = 'sound_win.mp3'
 bg_sound = 'bg_sound.mp3'
