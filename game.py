@@ -155,8 +155,8 @@ def bild_level_2(pleyer_image, level_2, lives, coins, animals, deracsen, text1):
 
 def bild_level_1(x, y, walls, pleyer_image, coins, animals, lives, deracsen, text1,):
     img = pygame.image.load(background_around)
-    img = pygame.transform.scale(img, (around_bg_width,around_bg_hight))
-    screen.blit(img, (-500, -400))
+    img = pygame.transform.scale(img, (600,600))
+    screen.blit(img, (-50,-50))
     img = pygame.image.load(plur_image)
     img = pygame.transform.scale(img, (plur_w, plur_h))
     screen.blit(img, (walls[0].wall_x , walls[0].wall_y + 20))
@@ -285,7 +285,7 @@ def win_game():
     screen.blit(text1, [140, 270])
     # print you win
     font = pygame.font.SysFont(None, 100)
-    text = font.render('you win!!!', True, (250, 250, 0))
+    text = font.render('you win!!!', True, (250, 250, 50))
     screen.blit(text, [start_level1_buttons_x_pos + 50, start_level1_buttons_y_pos + 10])
 
 def lose():
@@ -303,5 +303,5 @@ def lose():
     screen.blit(text1, [140, 270])
     # print you win
     font = pygame.font.SysFont(None, 100)
-    text = font.render('you lose!!!', True, (250, 250, 250))
+    text = font.render('you lose!!!', True, (250, 0, 0))
     screen.blit(text, [start_level1_buttons_x_pos + 50, start_level1_buttons_y_pos + 10])

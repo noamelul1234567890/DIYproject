@@ -280,7 +280,7 @@ def main():
                     pos = pygame.mouse.get_pos()
                     if ((setting_x <= pos[0] <= setting_x + 150) and
                             (setting_y <= pos[1] <= setting_y + setting_hight)):
-                        chack_if_exit_or_resume = display_pause_screen()
+                        chack_if_exit_or_resume = display_pause_screen(Screen_mode)
                         if chack_if_exit_or_resume == True:
                             Screen_mode = 'levels'
                         elif chack_if_exit_or_resume == "level 1":
@@ -310,7 +310,7 @@ def main():
 
                 if ((setting_x <= pos[0] <= setting_x + settin_width) and
                         (setting_y <= pos[1] <= setting_y + setting_hight)):
-                    chack_if_exit_or_resume = display_pause_screen()
+                    chack_if_exit_or_resume = display_pause_screen(Screen_mode)
                     if chack_if_exit_or_resume == True:
                         Screen_mode = 'levels'
                     elif chack_if_exit_or_resume == "level 1":
