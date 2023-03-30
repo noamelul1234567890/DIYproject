@@ -96,7 +96,7 @@ def level_bose(deracsen, pleyer_image, x, y, atak, a, live,timer_start_bose):
     screen.blit(text, (10, 10))
     timea = pygame.time.get_ticks()
     font = pygame.font.Font(None, 36)
-    text = font.render("time:  {}".format((timea - timer_start_bose) // 1000), True, (0, 0, 0))
+    text = font.render("time:  {}".format((timea - timer_start_bose) // 1000), True, (250, 0, 250))
     screen.blit(text, (400, 60))
     screen.blit(text1, (setting_x, setting_y))
 
@@ -173,10 +173,12 @@ def bild_level_2(pleyer_image, level_2, lives, coins, animals, deracsen, text1):
 
 
 def bild_level_1(x, y, walls, pleyer_image, coins, animals, lives, deracsen, text1,):
-
+    img = pygame.image.load(background_around)
+    img = pygame.transform.scale(img, (around_bg_width,around_bg_hight))
+    screen.blit(img, (-500, -400))
     img = pygame.image.load(plur_image)
     img = pygame.transform.scale(img, (plur_w, plur_h))
-    screen.blit(img, (walls[0].wall_x, walls[0].wall_y))
+    screen.blit(img, (walls[0].wall_x , walls[0].wall_y + 20))
     for i in range(len(animals)):
         img = pygame.image.load(animals[i].image)
         img = pygame.transform.scale(img, (animals[i].WIDTH, animals[i].HEIGHT))
@@ -315,8 +317,11 @@ def win_game():
     pygame.draw.rect(screen, (250, 20, 0), square)
 
     font = pygame.font.SysFont(None, 100)
-    text1 = font.render('levels', True, (0, 10, 10))
-    screen.blit(text1, [140, 210])
+    text = font.render('level 2', True, (0, 10, 10))
+    screen.blit(text, [140, 210])
+
+    text1 = font.render('levels', True, (149, 55, 100))
+    screen.blit(text1, [140, 270])
     # print you win
     font = pygame.font.SysFont(None, 100)
     text = font.render('you win!!!', True, (250, 250, 0))

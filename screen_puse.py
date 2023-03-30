@@ -10,7 +10,7 @@ WHITE = (255, 255, 255)
 TRANSPRET_BLACK = (0, 0, 0, 128)
 
 
-def display_pause_screen():
+def display_pause_screen(Screen_mode):
     overlay = pygame.Surface((window_width, window_height), pygame.SRCALPHA)
     overlay.fill(TRANSPRET_BLACK)
     game_window.blit(overlay, (0, 0))
@@ -48,7 +48,12 @@ def display_pause_screen():
                     return True
 
                 if ((120 < posx < 350) and (270 < posy < 320)):
-                    return "level 1"
+                    if Screen_mode == 'level 1':
+                        return "level 1"
+                    if Screen_mode == 'level 2':
+                        return "level 2"
+                    if Screen_mode == 'bose':
+                        return "bose"
 
             if event.type == pygame.QUIT:
                 finish = True

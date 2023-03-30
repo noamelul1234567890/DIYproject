@@ -43,13 +43,13 @@
 #   t1 = time.time()
 #
 #   # calculate the difference, i.e. the time elapsed
-#   dt = t1 - t0
-#
-#   if dt >= 3:
-#     print ("Three seconds reached, resetting timer")
-#     t0 = t1
-#   else:
-#     print ("Time elapsed is", dt, "seconds")
+# #   dt = t1 - t0
+# #
+# #   if dt >= 3:
+# #     print ("Three seconds reached, resetting timer")
+# #     t0 = t1
+# #   else:
+# #     print ("Time elapsed is", dt, "seconds")
 # import pygame
 #
 # pygame.init()
@@ -66,7 +66,7 @@
 #
 #     print(current_time // 1000)
 #
-#     if (current_time//1000) > 5:
+#     if (current_time) > 5:
 #         game_ended = False
 #         clock = pygame.time.get_ticks()
 #         print(clock//1000)

@@ -1,11 +1,11 @@
-start_background = "Images//OIP.jpg"
-plur_image = 'Images//r.png'
+start_background = "Images//init_screen.png"
+plur_image = 'Images//maze.png'
 wall_image = 'Images//wall.jpg'
 pleyer_1_image_up ='Images//pleyer_1.png'
 pleyer_1_image_left ='Images//pleyer1234567.png'
 pleyer_1_image_rire = 'Images//pleyr123456.png'
 pleyer_1_image_dound ='Images//pleyer_11.png'
-
+background_around = 'Images//around_bg.png'
 coin = 'Images//coin.png'
 level2_image = 'Images//level_2.png'
 bake_botom_image = 'Images//botom_bake.png'
@@ -31,8 +31,9 @@ xx = 'Images//xx.png'
 flure = 'Images//f.jpg'
 bose = 'Images//bose.png'
 hegrof = 'Images//hegrof.png'
-
+win_screen = 'Images//win_screen1.png'
 #sounds
+WIN_SCREEN_SOUND = 'sound_win.mp3'
 bg_sound = 'bg_sound.mp3'
 start_sound = 'Clash Royale Game Music - Menu Theme - Game Theme HQ OST.mp3'
 hitnagshut_sound = 'BRUH.mp3'
@@ -48,11 +49,13 @@ plur_h = 600
 setting_text = "SETTING"
 
 
-start_background_width = 600
-start_background_height = 600
+start_background_width = 500
+start_background_height = 500
 start_background_x_pos = 0
 start_background_y_pos = 0
 
+around_bg_width = 2000
+around_bg_hight = 2000
 #buttons
 shop_buttons_x_pos = 150
 shop_buttons_y_pos = 250
