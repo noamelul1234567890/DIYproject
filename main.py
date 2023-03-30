@@ -32,10 +32,10 @@ def main():
 
     timer_start_bose = 0
     lives = 180
-
+    fire_on = True
     flur_y = -350
     flur_x = -250
-
+    x_fire = 140
     levels_screen_x = 0
     levels_screen_y = 0
     levels_screen_w = 600
@@ -341,18 +341,19 @@ def main():
             if live < 0:
                 Screen_mode = 'lose'
 
+
             level_bose(deracsen, pleyer_image, x, y, atak, a, live,timer_start_bose)
             atak_1 = [100, 300, True]
 
             if timer_start_bose + 1000 < timemer < timer_start_bose + 2000:
                 font = pygame.font.SysFont(None, 40)
-                text1 = font.render('you ur uglei', True, (0, 10, 10))
-                screen.blit(text1, [30, 60])
+                text2 = font.render('you ur uglei', True, (0, 10, 10))
+                screen.blit(text2, [30, 60])
 
             if timer_start_bose + 1800 < timemer < timer_start_bose + 3000:
                 font = pygame.font.SysFont(None, 60)
-                text1 = font.render('no', True, (0, 10, 10))
-                screen.blit(text1, [150, 200])
+                text2 = font.render('no', True, (0, 10, 10))
+                screen.blit(text2, [150, 200])
 
             if timer_start_bose + 5000 < timemer < timer_start_bose + 7000:
                 image = pygame.image.load(hegrof)
@@ -427,7 +428,7 @@ def main():
                 p = pygame.transform.scale(p, (100, 100))
                 screen.blit(p, (300, yui_3))
                 if yui_3 < 130:
-                    yui_3 += 1
+                    yui_3 += 2
 
                 image = pygame.image.load(rto)
                 p = pygame.transform.rotate(image, 180)
@@ -514,18 +515,40 @@ def main():
                         square = pygame.Rect(rains[i][0], rains[i][1], 20, 20)
                         pygame.draw.rect(screen, (0, 10, 10), square)
 
-            if timemer > timer_start_bose + 30000:
+            if timemer > timer_start_bose + 36000:
                 Screen_mode = 'win'
 
             if timer_start_bose + 24000 < timemer < timer_start_bose + 26000:
                 font = pygame.font.SysFont(None, 40)
-                text1 = font.render('how you do it?', True, (0, 10, 10))
-                screen.blit(text1, [30, 60])
+                text2 = font.render('how you do it?', True, (0, 10, 10))
+                screen.blit(text2, [30, 60])
 
             if timer_start_bose + 25000 < timemer < timer_start_bose + 30000:
                 font = pygame.font.SysFont(None, 60)
-                text1 = font.render('i play fortinait', True, (0, 10, 10))
-                screen.blit(text1, [150, 200])
+                text2 = font.render('i play fortinait', True, (0, 10, 10))
+                screen.blit(text2, [150, 200])
+
+
+            if timer_start_bose + 25000 < timemer < timer_start_bose + 30000:
+                if fire_on:
+                    x_fire += 2
+                    if x_fire > 400:
+                        fire_on = False
+                else:
+                    x_fire -= 2
+                image = pygame.image.load(fire)
+                p = pygame.transform.rotate(image, 180)
+                p = pygame.transform.scale(p, (100, 100))
+                screen.blit(p, (200, x_fire))
+
+            if timer_start_bose + 28000 < timemer < timer_start_bose + 35000:
+                image = pygame.image.load(firefire)
+                p = pygame.transform.rotate(image, 0)
+                p = pygame.transform.scale(p, (200, 200))
+                screen.blit(p, (150, -30))
+
+
+
 
             if shoott:
                 x = 210

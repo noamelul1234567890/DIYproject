@@ -31,6 +31,9 @@ xx = 'Images//xx.png'
 flure = 'Images//f.jpg'
 bose = 'Images//bose.png'
 hegrof = 'Images//hegrof.png'
+fire = 'Images//fire.png'
+firefire = 'Images//firefire.png'
+
 
 #sounds
 bg_sound = 'bg_sound.mp3'
